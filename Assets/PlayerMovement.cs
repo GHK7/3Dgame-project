@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
         }
 
-        float x = Input.GetAxisRaw("Vertical");
-        float z = Input.GetAxisRaw("Horizontal");
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
         if (isDashing)
         {
