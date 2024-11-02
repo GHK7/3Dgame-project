@@ -1,8 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemPickup : MonoBehaviour
 {
     private bool isPlayerInRange = false;
+    public GameObject pickupText; // UI 提示對象
+
+    void Start()
+    {
+        if (pickupText != null)
+        {
+            pickupText.SetActive(false); // 初始化時隱藏撿取提示
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -32,14 +42,20 @@ public class ItemPickup : MonoBehaviour
 
     void ShowPickupMessage()
     {
-        // 顯示撿取提示訊息，例如顯示UI文字
-        Debug.Log("Press E to pick up the item");
+        // 顯示撿取提示訊息
+        if (pickupText != null)
+        {
+            pickupText.SetActive(true);
+        }
     }
 
     void HidePickupMessage()
     {
         // 隱藏撿取提示訊息
-        Debug.Log("Out of range");
+        if (pickupText != null)
+        {
+            pickupText.SetActive(false);
+        }
     }
 
     void PickupItem()
@@ -47,7 +63,8 @@ public class ItemPickup : MonoBehaviour
         // 撿取物品的邏輯，例如增加物品到玩家的背包
         Debug.Log("Item picked up!");
 
-        // 刪除或隱藏物品
+        // 隱藏提示並刪除物品
+        HidePickupMessage();
         Destroy(gameObject);
     }
 }
