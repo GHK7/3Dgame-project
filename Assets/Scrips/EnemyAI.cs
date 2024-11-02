@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private Animator animator;            // 动画组件
     private float lastAttackTime;
     private bool isPaused = false;        // 检查敌人是否处于暂停状态
+    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
@@ -18,6 +19,8 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();  // 获取动画组件
         lastAttackTime = -attackCooldown;     // 使敌人一开始可以立即攻击
     }
+
+
 
     void Update()
     {
@@ -32,10 +35,12 @@ public class EnemyAI : MonoBehaviour
         if (navMeshAgent.velocity.magnitude > 0.1f)
         {
             animator.SetBool("isRunning", true);
+            animator.SetBool("isIdle", false);
         }
         else
         {
             animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", true);
         }
 
         if (distanceToPlayer <= attackRange)  // 如果玩家在攻击范围内
@@ -60,6 +65,7 @@ public class EnemyAI : MonoBehaviour
         isPaused = true;  // 设置敌人状态为暂停
         navMeshAgent.isStopped = true;  // 暂停敌人的移动
         animator.SetBool("isRunning", false);  // 设置动画为停止状态
+        animator.SetBool("isIdle", true);
         yield return new WaitForSeconds(pauseTime);  // 等待指定的暂停时间
         navMeshAgent.isStopped = false;  // 恢复敌人移动
         isPaused = false;  // 取消暂停状态
