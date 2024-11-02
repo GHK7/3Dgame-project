@@ -64,10 +64,16 @@ public class EnemyAI : MonoBehaviour
     {
         isPaused = true;  // 设置敌人状态为暂停
         navMeshAgent.isStopped = true;  // 暂停敌人的移动
+        navMeshAgent.velocity = Vector3.zero;  // 确保 NavMeshAgent 的速度为零
         animator.SetBool("isRunning", false);  // 设置动画为停止状态
         animator.SetBool("isIdle", true);
+        Debug.Log("Enemy paused after attack.");
+
         yield return new WaitForSeconds(pauseTime);  // 等待指定的暂停时间
+
         navMeshAgent.isStopped = false;  // 恢复敌人移动
         isPaused = false;  // 取消暂停状态
+        Debug.Log("Enemy resumed movement.");
     }
+
 }
