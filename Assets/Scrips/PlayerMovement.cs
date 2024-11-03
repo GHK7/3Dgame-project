@@ -63,8 +63,8 @@ public class PlayerMovement : MonoBehaviour
         // 跳躍
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
-            Debug.Log("Jump");
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            //Debug.Log("Jump");
         }
 
         if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0 && move.magnitude > 0)
