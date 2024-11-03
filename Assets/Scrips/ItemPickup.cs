@@ -69,7 +69,7 @@ public class ItemPickup : MonoBehaviour
     void PickupItem()
     {
         // 撿取物品的邏輯，例如增加物品到玩家的背包
-        Debug.Log("Item picked up!");
+        //Debug.Log("Item picked up!");
 
         // 增加玩家頭上的光強度
         if (playerLight != null)
