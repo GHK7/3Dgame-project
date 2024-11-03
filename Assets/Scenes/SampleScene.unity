@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b38b29bfae9b44f9bec98ddbbdfdf8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b38b29bfae9b44f9bec98ddbbdfdf8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -474,7 +474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -965,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1629,7 +1629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_TagString
@@ -2538,7 +2538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_TagString
@@ -3087,7 +3087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 99b38b29bfae9b44f9bec98ddbbdfdf8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3974,7 +3974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_TagString
@@ -4619,7 +4619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
       propertyPath: m_TagString
@@ -4926,7 +4926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c392bef6f7ea1c541bd182a48df9efed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1634192860842554149, guid: c392bef6f7ea1c541bd182a48df9efed, type: 3}
       propertyPath: m_LocalScale.x
@@ -9824,7 +9824,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2133537480}
   - component: {fileID: 2133537482}
-  - component: {fileID: 2133537481}
   m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
@@ -9847,14 +9846,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 483405227}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!81 &2133537481
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133537479}
-  m_Enabled: 1
 --- !u!20 &2133537482
 Camera:
   m_ObjectHideFlags: 0
