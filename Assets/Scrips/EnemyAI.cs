@@ -5,22 +5,21 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform player;              // 玩家对象
-    public float attackRange = 2f;        // 敌人的攻击范围
+    public float attackRange = 5f;        // 敌人的攻击范围
     public float attackCooldown = 2f;     // 攻击冷却时间
+    public float speed = 3.5f;            // 敌人移动速度
     private NavMeshAgent navMeshAgent;    // 导航代理，用于敌人的移动
     private Animator animator;            // 动画组件
     private float lastAttackTime;
     private bool isPaused = false;        // 检查敌人是否处于暂停状态
-    private UnityEngine.AI.NavMeshAgent agent;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();  // 获取动画组件
+        navMeshAgent.speed = speed;           // 设置敌人移动速度
         lastAttackTime = -attackCooldown;     // 使敌人一开始可以立即攻击
     }
-
-
 
     void Update()
     {
@@ -75,5 +74,4 @@ public class EnemyAI : MonoBehaviour
         isPaused = false;  // 取消暂停状态
         Debug.Log("Enemy resumed movement.");
     }
-
 }
