@@ -14,7 +14,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;    // 导航代理，用于敌人的移动
     private Animator animator;             // 动画组件
     private float lastAttackTime;
-    private bool isPaused = false;        // 检查敌人是否处于暂停状态
+    //private bool isPaused = false;        // 检查敌人是否处于暂停状态
 
 
 
@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (isPaused) return;  // 如果敌人处于暂停状态，停止更新
+        //if (isPaused) return;  // 如果敌人处于暂停状态，停止更新
 
         // 设置敌人的目标为玩家的位置
         navMeshAgent.SetDestination(player.position);
@@ -77,17 +77,17 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator PauseAfterAttack(float pauseTime)
     {
-        isPaused = true;  // 设置敌人状态为暂停
-        navMeshAgent.isStopped = true;  // 暂停敌人的移动
-        navMeshAgent.velocity = Vector3.zero;  // 确保 NavMeshAgent 的速度为零
+        //isPaused = true;  // 设置敌人状态为暂停
+        //navMeshAgent.isStopped = true;  // 暂停敌人的移动
+        //navMeshAgent.velocity = Vector3.zero;  // 确保 NavMeshAgent 的速度为零
         animator.SetBool("isRunning", false);  // 设置动画为停止状态
         animator.SetBool("isIdle", true);
         //Debug.Log("Enemy paused after attack.");
 
         yield return new WaitForSeconds(pauseTime);  // 等待指定的暂停时间
 
-        navMeshAgent.isStopped = false;  // 恢复敌人移动
-        isPaused = false;  // 取消暂停状态
+        //navMeshAgent.isStopped = false;  // 恢复敌人移动
+        //isPaused = false;  // 取消暂停状态
         //Debug.Log("Enemy resumed movement.");
     }
 
