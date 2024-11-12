@@ -38,4 +38,9 @@ public class TriggerVictory : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("MainMenu");
     }
+
+    public void Credit()
+    {
+        SceneManager.LoadSceneAsync("Credit");
+    }
 }

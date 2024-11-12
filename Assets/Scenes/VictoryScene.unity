@@ -451,8 +451,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 819986017}
+        m_TargetAssemblyTypeName: TriggerVictory, Assembly-CSharp
         m_MethodName: Credit
         m_Mode: 1
         m_Arguments:
