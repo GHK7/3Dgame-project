@@ -3544,6 +3544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2086722497}
   volumeSlider: {fileID: 1421906109}
+  pauseButton: {fileID: 1320031703}
 --- !u!4 &245384372
 Transform:
   m_ObjectHideFlags: 0
@@ -11046,6 +11047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2086722497}
   volumeSlider: {fileID: 1421906109}
+  pauseButton: {fileID: 1320031703}
 --- !u!1001 &604290619
 PrefabInstance:
   m_ObjectHideFlags: 0

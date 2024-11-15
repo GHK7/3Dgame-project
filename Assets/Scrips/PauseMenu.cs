@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI; // 暫停選單的 UI 物件
     public Slider volumeSlider; // 調整音量的 Slider
     private bool isPaused = false;
+    public GameObject pauseButton;
 
     private void Start()
     {
@@ -16,6 +17,7 @@ public class PauseMenu : MonoBehaviour
 
         // 隱藏暫停選單
         pauseMenuUI.SetActive(false);
+        pauseButton.SetActive(true);
     }
 
     private void Update()
@@ -42,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false); // 隱藏暫停選單
+        pauseButton.SetActive(true);
         Time.timeScale = 1; // 恢復遊戲時間
         isPaused = false;
     }
@@ -75,5 +78,6 @@ public class PauseMenu : MonoBehaviour
     public void PauseButton()
     {
         Pause();
+        pauseButton.SetActive(false);
     }
 }
