@@ -36,11 +36,13 @@ public class TriggerVictory : MonoBehaviour
 
     public void BackMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync("MainMenu");
     }
 
     public void Credit()
     {
+        Time.timeScale = 1;
         SceneManager.LoadSceneAsync("Credit");
     }
 }
