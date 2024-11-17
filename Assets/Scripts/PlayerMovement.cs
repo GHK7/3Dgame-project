@@ -26,6 +26,18 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isDashing = false;
     private float dashCooldownTimer = 0f;
+    private AudioSource audioSource; // 音效來源
+    public AudioClip runSound; // 跑步音效
+    private bool isPlayingRunSound = false; // 確保跑步音效不重複播放
+    private Animator animator;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+        animator = GetComponent<Animator>();  // 获取动画组件
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,6 +62,8 @@ public class PlayerMovement : MonoBehaviour
             controller.Move(move * speed * Time.deltaTime);
         }
 
+        
+
         // 當角色在地面上並向下移動時重設Y方向速度
         if (isGrounded && velocity.y < 0)
         {
@@ -65,6 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             //Debug.Log("Jump");
+            
         }
 
         if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0 && move.magnitude > 0)
@@ -84,6 +99,25 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+        if (isGrounded && move.magnitude > 0 && !isDashing)
+        {
+            if (!audioSource.isPlaying && !isPlayingRunSound)
+            {
+                audioSource.clip = runSound;
+                audioSource.loop = true;
+                audioSource.Play();
+                isPlayingRunSound = true;
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying && isPlayingRunSound)
+            {
+                audioSource.Stop();
+                isPlayingRunSound = false;
+            }
+        }
+
         // 當有移動輸入時進行旋轉和平移
         if (direction.magnitude >= 0.1f)
         {
@@ -93,12 +127,27 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isIdle", false);
+            
+        }
+        else
+        {
+            
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", true);
         }
     }
     private IEnumerator Dash()
     {
         isDashing = true;
         dashCooldownTimer = dashCooldown;
+        if (audioSource.isPlaying && audioSource.isPlaying)
+        {
+            audioSource.Stop(); // 停止跑步音效
+            isPlayingRunSound = false;
+            animator.SetBool("isRunning", false);
+        }
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
     }
