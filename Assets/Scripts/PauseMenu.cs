@@ -8,12 +8,16 @@ public class PauseMenu : MonoBehaviour
     public Slider volumeSlider; // 調整音量的 Slider
     private bool isPaused = false;
     public GameObject pauseButton;
+    private AudioSource audioSource; // 音效來源
+    public AudioClip ButtonSound;
 
     private void Start()
     {
         // 初始化音量 Slider，假設音量預設為1
         volumeSlider.value = AudioListener.volume;
         volumeSlider.onValueChanged.AddListener(AdjustVolume);
+
+        audioSource = GetComponent<AudioSource>();
 
         // 隱藏暫停選單
         pauseMenuUI.SetActive(false);
@@ -26,6 +30,13 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
+            audioSource.clip = ButtonSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.loop = false;
         }
     }
 
