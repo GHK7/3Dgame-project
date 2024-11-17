@@ -79,12 +79,14 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             //Debug.Log("Jump");
-            
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", true);
         }
 
         if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0 && move.magnitude > 0)
         {
             StartCoroutine(Dash());
+
         }
 
         // 重力影響
