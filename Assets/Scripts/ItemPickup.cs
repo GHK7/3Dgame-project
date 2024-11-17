@@ -6,7 +6,7 @@ public class ItemPickup : MonoBehaviour
     private bool isPlayerInRange = false;
     public GameObject pickupText; // UI 提示對象
     public Light playerLight; // 玩家頭上的光源
-    public float lightIntensityIncrement = 0.5f; // 每次撿取物品增加的光強度
+    public float lightIntensityIncrement = 0.3f; // 每次撿取物品增加的光強度
 
     void Start()
     {

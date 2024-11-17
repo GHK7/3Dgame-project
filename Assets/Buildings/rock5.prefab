@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6799281753819419956
+--- !u!1 &3795392850521560853
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6657369291580411153}
-  - component: {fileID: 9028256127718475743}
-  - component: {fileID: 5735895978370112287}
-  - component: {fileID: 5817383505591976782}
+  - component: {fileID: 7337847981292646044}
+  - component: {fileID: 8296856762648367086}
+  - component: {fileID: 6209463977369974515}
+  - component: {fileID: 4684276145164407627}
   m_Layer: 0
-  m_Name: ricePlant
+  m_Name: rock5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6657369291580411153
+--- !u!4 &7337847981292646044
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799281753819419956}
+  m_GameObject: {fileID: 3795392850521560853}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0081, y: -0.0377, z: -0.7701}
-  m_LocalScale: {x: 0.8021, y: 0.8021, z: 0.8021}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9028256127718475743
+--- !u!33 &8296856762648367086
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799281753819419956}
-  m_Mesh: {fileID: -585292423714548544, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
---- !u!23 &5735895978370112287
+  m_GameObject: {fileID: 3795392850521560853}
+  m_Mesh: {fileID: -8831164416631861406, guid: 7e9fc3a03a3b9d24d9d7612854f21c34, type: 3}
+--- !u!23 &6209463977369974515
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799281753819419956}
+  m_GameObject: {fileID: 3795392850521560853}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,11 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -506269506361542419, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
-  - {fileID: -5986908333557132072, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
-  - {fileID: 9030815055092050735, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
-  - {fileID: 7806100501455280664, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
-  - {fileID: 72506440381146328, guid: 42b6b8dbb19362949a14e55859da2907, type: 3}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,22 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!205 &5817383505591976782
-LODGroup:
+--- !u!65 &4684276145164407627
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799281753819419956}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.040953636, y: 10.38588, z: -0.047828674}
-  m_Size: 21.152178
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.24701717
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 5735895978370112287}
+  m_GameObject: {fileID: 3795392850521560853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.493889, y: 8.719069, z: 17.996574}
+  m_Center: {x: 0.56155205, y: 3.2785225, z: -0.047870636}
