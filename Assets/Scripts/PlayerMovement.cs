@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            controller.Move(move * speed * Time.deltaTime);
+            //controller.Move(move * speed * Time.deltaTime);
         }
 
         
