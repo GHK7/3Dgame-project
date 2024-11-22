@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6117278691302712172}
   m_Layer: 0
   m_Name: tree
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,8 +95,8 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780477312361392691}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 1.1812067, y: 19.25215, z: 1.910428}
-  m_Size: 39.11865
+  m_LocalReferencePoint: {x: 1.1812067, y: 19.252153, z: 1.910428}
+  m_Size: 39.118656
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0

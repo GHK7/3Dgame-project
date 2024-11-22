@@ -10,6 +10,12 @@ public class EnemyAI : MonoBehaviour
     public float attackCooldown = 2f;     // 攻击冷却时间
     public float speed = 3.5f;            // 敌人移动速度
     public int maxAttacks = 3;            // 最大攻击次数
+
+    public int damage = 20;
+    public HealthBar healthBar;
+    public int maxHealths = 100;
+    public int currentHealth;//改動
+
     private int attackCount = 0;          // 当前攻击计数
     public NavMeshAgent agent;    // 导航代理，用于敌人的移动
 
@@ -29,6 +35,9 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();  // 获取动画组件
         agent.speed = speed;           // 设置敌人移动速度
         lastAttackTime = -attackCooldown;     // 使敌人一开始可以立即攻击
+
+        currentHealth = maxHealths = 100;
+        healthBar.SetMaxHealth(maxHealths);//改動
     }
 
     void Update()
@@ -54,11 +63,11 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackRange)  // 如果玩家在攻击范围内
         {
-            AttackPlayer();
+            AttackPlayer(20);//參數改動
         }
     }
 
-    void AttackPlayer()
+    void AttackPlayer(int damage)//參數改動
     {
         if (Time.time - lastAttackTime >= attackCooldown)  // 检查冷却时间
         {
@@ -66,16 +75,20 @@ public class EnemyAI : MonoBehaviour
             lastAttackTime = Time.time;  // 记录攻击时间
             animator.SetTrigger("attack");  // 触发攻击动画
             //StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
-            attackCount++;
+            //attackCount++;
 
-            if (attackCount >= maxAttacks)
-            {
-                EndGame();  // 结束游戏逻辑
-            }
-            else
-            {
-                //StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
-            }
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);//改動
+
+            //if (attackCount >= maxAttacks)
+            //{
+            //EndGame();  // 结束游戏逻辑
+            //}
+
+            //{
+            ////StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
+            //}
+
         }
     }
 
