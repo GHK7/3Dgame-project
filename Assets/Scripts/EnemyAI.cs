@@ -9,14 +9,11 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 5f;        // 敌人的攻击范围
     public float attackCooldown = 2f;     // 攻击冷却时间
     public float speed = 3.5f;            // 敌人移动速度
-    public int maxAttacks = 3;            // 最大攻击次数
+    //public int maxAttacks = 3;            // 最大攻击次数
 
-    public int damage = 20;
-    public HealthBar healthBar;
-    public int maxHealths = 100;
-    public int currentHealth;//改動
+    public HealthBar healthBar;            //生命值
 
-    private int attackCount = 0;          // 当前攻击计数
+    //private int attackCount = 0;          // 当前攻击计数
     public NavMeshAgent agent;    // 导航代理，用于敌人的移动
 
     private Animator animator;             // 动画组件
@@ -30,14 +27,10 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();  // 获取动画组件
         agent.speed = speed;           // 设置敌人移动速度
         lastAttackTime = -attackCooldown;     // 使敌人一开始可以立即攻击
-
-        currentHealth = maxHealths = 100;
-        healthBar.SetMaxHealth(maxHealths);//改動
     }
 
     void Update()
@@ -63,11 +56,11 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackRange)  // 如果玩家在攻击范围内
         {
-            AttackPlayer(20);//參數改動
+            AttackPlayer();//改動
         }
     }
 
-    void AttackPlayer(int damage)//參數改動
+    void AttackPlayer()//改動
     {
         if (Time.time - lastAttackTime >= attackCooldown)  // 检查冷却时间
         {
@@ -77,14 +70,13 @@ public class EnemyAI : MonoBehaviour
             //StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
             //attackCount++;
 
-            currentHealth -= damage;
-            healthBar.SetHealth(currentHealth);//改動
+            healthBar.beenAttacked(20);   //呼叫生命值腳本(傷害參數)
 
             //if (attackCount >= maxAttacks)
             //{
-            //EndGame();  // 结束游戏逻辑
+            // EndGame();  // 结束游戏逻辑
             //}
-
+            //else
             //{
             ////StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
             //}
@@ -94,10 +86,10 @@ public class EnemyAI : MonoBehaviour
 
     
 
-    void EndGame()
-    {
-        //Debug.Log("Game Over! Player attacked 3 times.");
-        SceneManager.LoadScene("GameOver");
-        Time.timeScale = 0f;  // 暂停游戏
-    }
+    //void EndGame()
+    //{
+    //    //Debug.Log("Game Over! Player attacked 3 times.");
+    //    SceneManager.LoadScene("GameOver");
+    //    Time.timeScale = 0f;  // 暂停游戏
+    //}
 }
