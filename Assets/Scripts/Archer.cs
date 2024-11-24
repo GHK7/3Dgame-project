@@ -23,7 +23,7 @@ public class detect : MonoBehaviour
     {
         if (detected)
         {
-            Debug.Log("1");
+            Debug.Log("®g½b");
             enemy.LookAt(target.transform);
         }
     }

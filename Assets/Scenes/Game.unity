@@ -3586,7 +3586,7 @@ GameObject:
   - component: {fileID: 183546602}
   - component: {fileID: 183546601}
   - component: {fileID: 183546600}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: 'Terrain '
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9973,7 +9973,7 @@ Transform:
   m_GameObject: {fileID: 314147826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.55}
+  m_LocalPosition: {x: 0, y: 0, z: 0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -20844,13 +20844,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 9.68
-  m_Radius: 3.07
+  m_Height: 7.94
+  m_Radius: 3.98
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0.6, y: 0.92, z: -3.57}
+  m_Center: {x: 0, y: 0.92, z: -0.42}
 --- !u!95 &483405230
 Animator:
   serializedVersion: 5
@@ -20892,7 +20892,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.99993896
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -38922,7 +38922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 980379944e7f44e45a6cf04995370aaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 980379944e7f44e45a6cf04995370aaf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38930,7 +38930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 980379944e7f44e45a6cf04995370aaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.199997
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 980379944e7f44e45a6cf04995370aaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39261,7 +39261,7 @@ Transform:
   m_GameObject: {fileID: 1118966120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: -4.26, z: -4.28}
+  m_LocalPosition: {x: 0.49, y: -4.26, z: -4.28}
   m_LocalScale: {x: 0.34061575, y: 0.34061575, z: 0.34061575}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39499,7 +39499,7 @@ Transform:
   m_GameObject: {fileID: 1152191817}
   serializedVersion: 2
   m_LocalRotation: {x: 0.16957991, y: 0, z: 0, w: 0.9855165}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42268,7 +42268,7 @@ Transform:
   m_GameObject: {fileID: 1274462319}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15162581, y: 0, z: 0, w: 0.988438}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59220,7 +59220,7 @@ Transform:
   m_GameObject: {fileID: 1827149263}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13366912, y: 0, z: 0, w: 0.99102604}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -66055,7 +66055,7 @@ GameObject:
   - component: {fileID: 2071310184}
   - component: {fileID: 2071310183}
   m_Layer: 9
-  m_Name: CubeArcher
+  m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66141,7 +66141,7 @@ Transform:
   m_GameObject: {fileID: 2071310180}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 694.7, y: 11.13, z: -55.4}
+  m_LocalPosition: {x: 703.46, y: 11.13, z: 108.1}
   m_LocalScale: {x: 5.43, y: 5.43, z: 5.43}
   m_ConstrainProportionsScale: 1
   m_Children:

@@ -2,14 +2,17 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float lifeTime = 5f; // 子彈的存活時間
-    public float maxDistance = 50f; // 子彈的最大距離
+    public float lifeTime = 3f; // 子彈的存活時間
+    public float maxDistance = 200f; // 子彈的最大距離
     private Vector3 startPosition;
 
-    public HealthBar healthBar;
+    HealthBar healthBar;
 
     void Start()
     {
+        // 動態搜尋 HealthBar
+        healthBar = FindObjectOfType<HealthBar>();
+
         startPosition = transform.position;
         Destroy(gameObject, lifeTime); // 在存活時間後自動銷毀
     }
@@ -25,15 +28,16 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // 如果進入的對象標籤是 "Player"
-        if (other.tag == "Player")
+        
+        if (other.tag == "Building" || other.tag == "Ground")
         {
             Destroy(gameObject); // 銷毀子彈
-            healthBar.beenAttacked(10);   //呼叫生命值腳本(傷害參數)
+            Debug.Log("23");
         }
-        else if (other.tag == "Building")
+        else if (other.tag == "Player" )
         {
             Destroy(gameObject);
+            healthBar.beenAttacked(10);   //呼叫生命值腳本(傷害參數)
         }
     }
 }
