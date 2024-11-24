@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
-    public float dashSpeed = 20f; // 衝刺速度
+    public float dashSpeed = 60f; // 衝刺速度
     public float dashDuration = 0.2f; // 衝刺持續時間
     public float dashCooldown = 2f; // 衝刺冷卻時間
 
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
-    public float speed = 20f;
+    public float speed = 40f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public float turnSmoothTime = 0.1f;
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
-    private bool isDashing = false;
+    public bool isDashing = false;
     private float dashCooldownTimer = 0f;
     private AudioSource audioSource; // 音效來源
     public AudioClip runSound; // 跑步音效

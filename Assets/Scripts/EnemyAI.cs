@@ -56,11 +56,11 @@ public class EnemyAI : MonoBehaviour
 
         if (distanceToPlayer <= attackRange)  // 如果玩家在攻击范围内
         {
-            AttackPlayer();//改動
+            AttackPlayer();
         }
     }
 
-    void AttackPlayer()//改動
+    void AttackPlayer()
     {
         if (Time.time - lastAttackTime >= attackCooldown)  // 检查冷却时间
         {
