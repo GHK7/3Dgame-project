@@ -3,13 +3,25 @@ using UnityEngine.UI;
 
 public class ItemPickup : MonoBehaviour
 {
-    private bool isPlayerInRange = false;
+    public int itemCount = 0; // 拾取數量
+    public Text itemCountText; // 直接使用Text類型
+    public GameObject ending;
+
     public GameObject pickupText; // UI 提示對象
     public Light playerLight; // 玩家頭上的光源
-    public float lightIntensityIncrement = 0.3f; // 每次撿取物品增加的光強度
+    public float lightIntensityIncrement = 0.3f; // 每次拾取物品增加的光強度
+
+    private bool isPlayerInRange = false;
 
     void Start()
     {
+        ending = GameObject.Find("Ending");
+        if(ending != null)
+        {
+            ending.SetActive(false);
+        }
+        
+
         if (pickupText != null)
         {
             pickupText.SetActive(false); // 初始化時隱藏撿取提示
@@ -17,8 +29,25 @@ public class ItemPickup : MonoBehaviour
 
         if (playerLight == null)
         {
-            // 嘗試在玩家身上自動尋找光源，如果沒有，則需要手動設置
-            playerLight = GameObject.FindWithTag("Player").GetComponentInChildren<Light>();
+            // 嘗試在玩家身上自動尋找光源
+            GameObject player = GameObject.FindWithTag("Player");
+            if (player != null)
+            {
+                playerLight = player.GetComponentInChildren<Light>();
+            }
+        }
+    }
+
+    void Update()
+    {
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+            PickupItem();
+        }
+
+        if(itemCount == 5)
+        {
+            ending.SetActive(true);
         }
     }
 
@@ -40,17 +69,8 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            PickupItem();
-        }
-    }
-
     void ShowPickupMessage()
     {
-        // 顯示撿取提示訊息
         if (pickupText != null)
         {
             pickupText.SetActive(true);
@@ -59,7 +79,6 @@ public class ItemPickup : MonoBehaviour
 
     void HidePickupMessage()
     {
-        // 隱藏撿取提示訊息
         if (pickupText != null)
         {
             pickupText.SetActive(false);
@@ -68,17 +87,20 @@ public class ItemPickup : MonoBehaviour
 
     void PickupItem()
     {
-        // 撿取物品的邏輯，例如增加物品到玩家的背包
-        //Debug.Log("Item picked up!");
+        itemCount++; // 增加拾取數量
 
-        // 增加玩家頭上的光強度
+        if (itemCountText != null)
+        {
+            itemCountText.text = $"{itemCount}";
+        }
+
         if (playerLight != null)
         {
             playerLight.intensity += lightIntensityIncrement;
         }
 
-        // 隱藏提示並刪除物品
         HidePickupMessage();
         Destroy(gameObject);
     }
 }
+
