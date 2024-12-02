@@ -18,10 +18,11 @@ public class PatrollingDefensiveEnemy : MonoBehaviour
     private EnemyState currentState = EnemyState.Patrolling; // 初始狀態設置為巡邏
     private int currentPointIndex = 0; // 當前巡邏點的索引
     private Transform currentTarget; // 當前目標巡邏點
-    private bool isGoHead = false; // 是否正在前進
+    //private bool isGoHead = false; // 是否正在前進
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>(); // 獲取NavMeshAgent組件
         // 檢查是否分配了巡邏點
         if (patrolPoints.Length == 0)
@@ -48,7 +49,8 @@ public class PatrollingDefensiveEnemy : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                // currentState = EnemyState.Retreating; // 如果玩家在攻擊範圍內，設置狀態為撤退
+                currentState = EnemyState.Retreating; // 如果玩家在攻擊範圍內，設置狀態為撤退
+                Debug.Log("Player");
             }
         }
 
@@ -60,20 +62,19 @@ public class PatrollingDefensiveEnemy : MonoBehaviour
 
     void UpdateState(float distanceToPlayer)
     {
-        // 根據與玩家的距離更新敵人的狀態
-        if (distanceToPlayer < attackRange)
+        if (distanceToPlayer < attackRange) // 玩家在攻擊範圍內
         {
-            // currentState = EnemyState.Retreating; // 如果玩家在攻擊範圍內，設置狀態為撤退
+            currentState = EnemyState.Retreating;
         }
-        else if (distanceToPlayer < retreatDistance || isGoHead)
+        else if (distanceToPlayer < retreatDistance) // 玩家在撤退範圍內
         {
-            currentState = EnemyState.Approaching; // 如果玩家在撤退距離內但不在攻擊範圍內，設置狀態為接近
+            currentState = EnemyState.Approaching;
         }
-        else if (currentState == EnemyState.Approaching || currentState == EnemyState.Retreating)
+        else if (currentState != EnemyState.Patrolling) // 如果不在撤退或接近狀態
         {
-            currentState = EnemyState.Patrolling; // 如果玩家超出撤退距離，設置狀態為巡邏
+            currentState = EnemyState.Patrolling;
         }
-        UpdateStatusText(); // 更新狀態文字以反映當前狀態
+        UpdateStatusText();
     }
 
     void ActBasedOnState()
@@ -145,7 +146,7 @@ public class PatrollingDefensiveEnemy : MonoBehaviour
 
     public void SetApproachPlayer(PlayerMovement player)
     {
-        isGoHead = true;
+        //isGoHead = true;
         // 設置敵人的目標玩家
         this.player = player.transform;
         currentState = EnemyState.Approaching;
