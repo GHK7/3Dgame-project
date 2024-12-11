@@ -13,9 +13,12 @@ public class detect : MonoBehaviour
     public float timetoShoot = 1.3f;
     float originaltime;
 
+    private Animator animator;
+
     void Start()
     {
         originaltime = timetoShoot;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,8 +26,13 @@ public class detect : MonoBehaviour
     {
         if (detected)
         {
+            animator.SetBool("IsShooting",true);
             Debug.Log("射箭");
             enemy.LookAt(target.transform);
+        }
+        else
+        {
+            animator.SetBool("IsShooting", false);
         }
     }
     private void FixedUpdate()
