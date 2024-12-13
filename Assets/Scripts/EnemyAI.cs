@@ -64,7 +64,6 @@ public class EnemyAI : MonoBehaviour
     {
         if (Time.time - lastAttackTime >= attackCooldown)  // 检查冷却时间
         {
-            //Debug.Log("Enemy attacks the player!");  // 在这里触发敌人的攻击动画和伤害逻辑
             lastAttackTime = Time.time;  // 记录攻击时间
             animator.SetTrigger("attack");  // 触发攻击动画
             //StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒

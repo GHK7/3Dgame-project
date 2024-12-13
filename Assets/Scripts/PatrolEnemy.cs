@@ -1,27 +1,32 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
 
 public class PatrolEnemy : MonoBehaviour
 {
     [Header("Patrol Settings")]
-    public Transform[] patrolPoints; // ¨µÅŞÂI
+    public Transform[] patrolPoints; // å·¡é‚é»
     private int currentPatrolIndex = 0;
 
     [Header("Chase Settings")]
     public GameObject player;
-    public float viewAngle = 45f;     // µø³¥¨¤«×
-    public float alertRadius = 10f;  // Äµ§Ù¥b®|
-    public LayerMask obstacleLayer;  // »ÙÃªª«¼h¯Å
-    public float rotationSpeed = 5f; // °lÀ»±ÛÂà³t«×
+    public float attackRange = 5f;  // æ”»æ“Šç¯„åœ
+    public float attackCooldown = 2f;     // æ”»å‡»å†·å´æ—¶é—´
+    public int damage = 15;
+    public LayerMask obstacleLayer;  // éšœç¤™ç‰©å±¤ç´š
+    //public float rotationSpeed = 5f; // è¿½æ“Šæ—‹è½‰é€Ÿåº¦
 
     [Header("Movement Settings")]
-    public float patrolSpeed = 2f;   // ¨µÅŞ³t«×
-    public float chaseSpeed = 3.5f;  // °lÀ»³t«×
+    public float viewAngle = 45f;     // è¦–é‡è§’åº¦
+    public float alertRadius = 10f;  // è­¦æˆ’åŠå¾‘
+    public float patrolSpeed = 2f;   // å·¡é‚é€Ÿåº¦
+    public float chaseSpeed = 3.5f;  // è¿½æ“Šé€Ÿåº¦
 
     private NavMeshAgent agent;
-    private bool isChasing = false;  // ·í«e¼Ò¦¡ª¬ºA
+    private bool isChasing = false;  // ç•¶å‰æ¨¡å¼ç‹€æ…‹
+    public HealthBar healthBar;            //ç”Ÿå‘½å€¼
+    private float lastAttackTime;
 
-
+    private Animator animator;
 
     void Start()
     {
@@ -29,6 +34,8 @@ public class PatrolEnemy : MonoBehaviour
         agent.speed = patrolSpeed;
         currentPatrolIndex = 0;
         PatrolToNextPoint();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -47,104 +54,132 @@ public class PatrolEnemy : MonoBehaviour
 
     private void PatrolMode()
     {
-        // §PÂ_¬O§_µo²{ª±®a
+        // åˆ¤æ–·æ˜¯å¦ç™¼ç¾ç©å®¶
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
         if (distanceToPlayer <= alertRadius && Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle)
         {
-            // ¨Ï¥Î Raycast ÀË¬d¬O§_¦³»ÙÃªª«¾B¾×
+            // ä½¿ç”¨ Raycast æª¢æŸ¥æ˜¯å¦æœ‰éšœç¤™ç‰©é®æ“‹
             if (!Physics.Raycast(transform.position, directionToPlayer.normalized, distanceToPlayer, obstacleLayer))
             {
-                // µo²{ª±®a¡A¤Á´«¨ì°lÀ»¼Ò¦¡
+                // ç™¼ç¾ç©å®¶ï¼Œåˆ‡æ›åˆ°è¿½æ“Šæ¨¡å¼
                 StartChasing();
                 return;
             }
         }
 
-        // ¨µÅŞÂIÅŞ¿è
+        // å·¡é‚é»é‚è¼¯
         if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             PatrolToNextPoint();
         }
     }
 
-    /*private void ChaseMode()
+    private void ChaseMode()
     {
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
-        // §ó·s°lÀ»¥Ø¼Ğ
+        // æ›´æ–°è¿½æ“Šç›®æ¨™
         agent.SetDestination(player.transform.position);
 
-        // ¦pªGª±®aÂ÷¶}Äµ§Ù½d³ò¡A¤Á¦^¨µÅŞ¼Ò¦¡
+        if(distanceToPlayer <= attackRange)
+        {
+            AttackPlayer();
+        }
+        else
+        {
+            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsChasing", true);
+        }
+        // å¦‚æœç©å®¶é›¢é–‹è­¦æˆ’ç¯„åœï¼Œåˆ‡å›å·¡é‚æ¨¡å¼
         if (distanceToPlayer > alertRadius)
+        {
+            StopChasing();
+        }
+    }
+    void AttackPlayer()
+    {
+        if(Time.time - lastAttackTime >= attackCooldown)
+        {
+            lastAttackTime = Time.time;  //è¨˜éŒ„æ”»æ“Šæ™‚é–“
+            healthBar.beenAttacked(damage);   //å‘¼å«ç”Ÿå‘½å€¼è…³æœ¬(å‚·å®³åƒæ•¸)
+        }
+        animator.SetBool("IsAttacking", true);
+        animator.SetBool("IsChasing", false);
+    }
+
+    /*private void ChaseMode()
+    {
+        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
+
+        // é¢å‘ç©å®¶ä¸¦ç§»å‹•
+        MoveAndRotate(directionToPlayer, chaseSpeed);
+
+       
+        // å¦‚æœç©å®¶é›¢é–‹è­¦æˆ’åŠå¾‘ï¼Œåˆ‡æ›å›å·¡é‚æ¨¡å¼
+        if (Vector3.Distance(transform.position, player.transform.position) > alertRadius)
         {
             StopChasing();
         }
     }*/
 
-    private void ChaseMode()
+    /*private void MoveAndRotate(Vector3 direction, float speed)
     {
-        Vector3 directionToPlayer = (player.transform.position - transform.position).normalized;
-
-        // ­±¦Vª±®a¨Ã²¾°Ê
-        MoveAndRotate(directionToPlayer, chaseSpeed);
-
-        // ¦pªGª±®aÂ÷¶}Äµ§Ù¥b®|¡A¤Á´«¦^¨µÅŞ¼Ò¦¡
-        if (Vector3.Distance(transform.position, player.transform.position) > alertRadius)
-        {
-            StopChasing();
-        }
-    }
-
-    private void MoveAndRotate(Vector3 direction, float speed)
-    {
-        // ±ÛÂàÅŞ¿è
+        // æ—‹è½‰é‚è¼¯
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-        // ²¾°ÊÅŞ¿è
+        // ç§»å‹•é‚è¼¯
         transform.position += transform.forward * speed * Time.deltaTime;
-    }
+    }*/
 
     private void StartChasing()
     {
         isChasing = true;
-        agent.speed = chaseSpeed; // ¤Á´«¨ì°lÀ»³t«×
+        agent.speed = chaseSpeed; // åˆ‡æ›åˆ°è¿½æ“Šé€Ÿåº¦
+
+        animator.SetBool("IsChasing", true);
     }
 
     private void StopChasing()
     {
         isChasing = false;
-        agent.speed = patrolSpeed; // ¤Á´«¨ì¨µÅŞ³t«×
-        PatrolToNextPoint(); // Ä~Äò¨µÅŞ
+        agent.speed = patrolSpeed; // åˆ‡æ›åˆ°å·¡é‚é€Ÿåº¦
+        PatrolToNextPoint(); // ç¹¼çºŒå·¡é‚
+
+        animator.SetBool("IsChasing", false);
     }
 
     private void PatrolToNextPoint()
     {
         if (patrolPoints.Length == 0) return;
 
-        // ³]¸m¥Ø¼Ğ¬°¤U¤@­Ó¨µÅŞÂI
+        // è¨­ç½®ç›®æ¨™ç‚ºä¸‹ä¸€å€‹å·¡é‚é»
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);
-        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length; // ´`Àô¤Á´«¨µÅŞÂI
+        currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length; // å¾ªç’°åˆ‡æ›å·¡é‚é»
     }
 
     private void OnDrawGizmosSelected()
     {
-        // µe¥XÄµ§Ù½d³ò
+        // ç•«å‡ºè­¦æˆ’ç¯„åœ
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, alertRadius);
 
-        // µe¥Xµø³¥½d³ò
+        // ç•«å‡ºè¦–é‡ç¯„åœ
         Vector3 leftBoundary = Quaternion.Euler(0, -viewAngle, 0) * transform.forward * alertRadius;
         Vector3 rightBoundary = Quaternion.Euler(0, viewAngle, 0) * transform.forward * alertRadius;
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, leftBoundary);
         Gizmos.DrawRay(transform.position, rightBoundary);
+
+        // ç•«å‡ºæ”»æ“Šç¯„åœ
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
