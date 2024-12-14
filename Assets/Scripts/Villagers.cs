@@ -31,6 +31,8 @@ public class Villagers : MonoBehaviour
     private float pauseTimer = 0f; // 記錄暫停時間
     private bool isPaused = false; // 是否正在暫停
 
+    private Animator animator;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>(); // 獲取 NavMeshAgent
@@ -52,6 +54,8 @@ public class Villagers : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(directionToCenter);
 
         Debug.Log($"NPC {npcIndex} 巡邏起始位置: {patrolStartPosition}");
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -102,7 +106,8 @@ public class Villagers : MonoBehaviour
     void StartPauseAndFacePlayer(Vector3 directionToPlayer)
     {
         isPaused = true;
-        pauseTimer = 2f; // 設定暫停時間為 2 秒
+        animator.SetBool("IsTerrified", true);
+        pauseTimer = 1f; // 設定暫停時間為 2 秒
         agent.isStopped = true; // 停止 NavMeshAgent 的移動
 
         // 計算並設置面向玩家的旋轉
@@ -115,6 +120,7 @@ public class Villagers : MonoBehaviour
     {
         isPaused = false;
         isRetreating = true; // 開始撤退狀態
+        animator.SetBool("IsRetreating", true );
         agent.isStopped = false; // 恢復 NavMeshAgent 的移動
         agent.speed = runSpeed;
         agent.SetDestination(retreatPoint.position); // 設置撤退目標
@@ -125,6 +131,8 @@ public class Villagers : MonoBehaviour
         if (isRetreating)
         {
             isRetreating = false;
+            animator.SetBool("IsTerrified", false);
+            animator.SetBool("IsRetreating", false);
             isReturningToPatrol = true;
             agent.speed = returnSpeed;
             agent.SetDestination(returnPoint.position);
