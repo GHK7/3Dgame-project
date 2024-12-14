@@ -91,7 +91,6 @@ public class PatrolEnemy : MonoBehaviour
         else
         {
             animator.SetBool("IsAttacking", false);
-            animator.SetBool("IsChasing", true);
         }
         // 如果玩家離開警戒範圍，切回巡邏模式
         if (distanceToPlayer > alertRadius)
@@ -107,7 +106,6 @@ public class PatrolEnemy : MonoBehaviour
             healthBar.beenAttacked(damage);   //呼叫生命值腳本(傷害參數)
         }
         animator.SetBool("IsAttacking", true);
-        animator.SetBool("IsChasing", false);
     }
 
     /*private void ChaseMode()

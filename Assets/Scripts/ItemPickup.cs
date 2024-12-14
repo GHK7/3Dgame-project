@@ -6,7 +6,7 @@ public class ItemPickup : MonoBehaviour
     public int itemCount = 0; // 拾取數量
     public Text itemCountText; // 直接使用Text類型
     public GameObject ending;
-
+    //public float rotationSpeed = 100f; // 控制旋轉速度
     public GameObject pickupText; // UI 提示對象
     public Light playerLight; // 玩家頭上的光源
     public float lightIntensityIncrement = 0.3f; // 每次拾取物品增加的光強度
@@ -40,6 +40,11 @@ public class ItemPickup : MonoBehaviour
 
     void Update()
     {
+        /*// 計算旋轉角度
+        float rotationAmount = rotationSpeed * Time.deltaTime;
+        // 讓物件繞著 Y 軸旋轉
+        transform.Rotate(0f, rotationAmount, 0f);*/
+
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
             PickupItem();
