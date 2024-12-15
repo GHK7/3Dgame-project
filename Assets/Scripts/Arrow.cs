@@ -2,24 +2,24 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float lifeTime = 3f; // ¤l¼uªº¦s¬¡®É¶¡
-    public float maxDistance = 200f; // ¤l¼uªº³Ì¤j¶ZÂ÷
+    public float lifeTime = 3f; // ï¿½lï¿½uï¿½ï¿½ï¿½sï¿½ï¿½ï¿½É¶ï¿½
+    public float maxDistance = 200f; // ï¿½lï¿½uï¿½ï¿½ï¿½Ì¤jï¿½Zï¿½ï¿½
     private Vector3 startPosition;
 
     HealthBar healthBar;
 
     void Start()
     {
-        // °ÊºA·j´M HealthBar
+        // ï¿½ÊºAï¿½jï¿½M HealthBar
         healthBar = FindObjectOfType<HealthBar>();
 
         startPosition = transform.position;
-        Destroy(gameObject, lifeTime); // ¦b¦s¬¡®É¶¡«á¦Û°Ê¾P·´
+        Destroy(gameObject, lifeTime); // ï¿½bï¿½sï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½Û°Ê¾Pï¿½ï¿½
     }
 
     void Update()
     {
-        // ¦pªG¶W¥X³Ì¤j¶ZÂ÷¡A¾P·´¤l¼u
+        // ï¿½pï¿½Gï¿½Wï¿½Xï¿½Ì¤jï¿½Zï¿½ï¿½ï¿½Aï¿½Pï¿½ï¿½ï¿½lï¿½u
         if (Vector3.Distance(startPosition, transform.position) > maxDistance)
         {
             Destroy(gameObject);
@@ -31,13 +31,13 @@ public class Arrow : MonoBehaviour
         
         if (other.tag == "Building" || other.tag == "Ground")
         {
-            Destroy(gameObject); // ¾P·´¤l¼u
+            Destroy(gameObject); // ï¿½Pï¿½ï¿½ï¿½lï¿½u
             Debug.Log("23");
         }
         else if (other.tag == "Player" )
         {
             Destroy(gameObject);
-            healthBar.beenAttacked(10);   //©I¥s¥Í©R­È¸}¥»(¶Ë®`°Ñ¼Æ)
+            healthBar.beenAttacked(10);   //ï¿½Iï¿½sï¿½Í©Rï¿½È¸}ï¿½ï¿½(ï¿½Ë®`ï¿½Ñ¼ï¿½)
         }
     }
 }
