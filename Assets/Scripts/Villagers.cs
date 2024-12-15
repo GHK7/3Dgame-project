@@ -3,11 +3,11 @@ using UnityEngine.AI;
 
 public class Villagers : MonoBehaviour
 {
-    public Transform player; // ª±®a
-    public Transform retreatPoint; // ºM°hÂI
-    public Transform returnPoint; // ªð¦^ÂI (ªð¦^¨µÅÞ®Éªº¥Ø¼ÐÂI)
-    public float alertRadius = 200f; // Äµ§Ù¥b®|
-    public float fieldOfView = 45f; // µø³¥½d³ò
+    public Transform player; // ï¿½ï¿½ï¿½a
+    public Transform retreatPoint; // ï¿½Mï¿½hï¿½I
+    public Transform returnPoint; // ï¿½ï¿½^ï¿½I (ï¿½ï¿½^ï¿½ï¿½ï¿½Þ®Éªï¿½ï¿½Ø¼ï¿½ï¿½I)
+    public float alertRadius = 200f; // Äµï¿½Ù¥bï¿½|
+    public float fieldOfView = 45f; // ï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
     public float runSpeed = 50f;
     public float returnSpeed = 15f;
 
@@ -15,52 +15,52 @@ public class Villagers : MonoBehaviour
     private bool isRetreating = false;
     private bool isReturningToPatrol = false;
 
-    [Header("³]©w¶ê§Î¹B°Ê°Ñ¼Æ")]
-    public Vector3 center = Vector3.zero; // ¶ê¤ß¦ì¸m
-    public float radius = 5f; // ¶êªº¥b®|
-    public float speed = 2f; // ²¾°Ê³t«× (¨¤³t«×¡A©·«×¨C¬í)
+    [Header("ï¿½]ï¿½wï¿½ï¿½Î¹Bï¿½Ê°Ñ¼ï¿½")]
+    public Vector3 center = Vector3.zero; // ï¿½ï¿½ß¦ï¿½m
+    public float radius = 5f; // ï¿½êªºï¿½bï¿½|
+    public float speed = 2f; // ï¿½ï¿½ï¿½Ê³tï¿½ï¿½ (ï¿½ï¿½ï¿½tï¿½×¡Aï¿½ï¿½ï¿½×¨Cï¿½ï¿½)
 
-    private float angle; // ·í«eªº¨¤«×
-    private float startAngle; // ¨µÅÞªº°_©l¨¤«×
-    public int npcIndex; // NPC ªº°ß¤@½s¸¹ (¤â°Ê³]¸m©Îµ{§Ç¥Í¦¨)
-    public int totalNPCs = 18; // ³õ´º¤¤ NPC ªºÁ`¼Æ
+    private float angle; // ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private float startAngle; // ï¿½ï¿½ï¿½Þªï¿½ï¿½_ï¿½lï¿½ï¿½ï¿½ï¿½
+    public int npcIndex; // NPC ï¿½ï¿½ï¿½ß¤@ï¿½sï¿½ï¿½ (ï¿½ï¿½Ê³]ï¿½mï¿½Îµ{ï¿½Ç¥Í¦ï¿½)
+    public int totalNPCs = 18; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NPC ï¿½ï¿½ï¿½`ï¿½ï¿½
 
-    [Header("¨µÅÞ°_©l®y¼Ð¡]¦Û°Ê­pºâ¡^")]
-    public Vector3 patrolStartPosition; // NPC ¨µÅÞ°_©l¦ì¸m (¦Û°Ê­pºâ)
+    [Header("ï¿½ï¿½ï¿½Þ°_ï¿½lï¿½yï¿½Ð¡]ï¿½Û°Ê­pï¿½ï¿½^")]
+    public Vector3 patrolStartPosition; // NPC ï¿½ï¿½ï¿½Þ°_ï¿½lï¿½ï¿½m (ï¿½Û°Ê­pï¿½ï¿½)
 
-    private float pauseTimer = 0f; // °O¿ý¼È°±®É¶¡
-    private bool isPaused = false; // ¬O§_¥¿¦b¼È°±
+    private float pauseTimer = 0f; // ï¿½Oï¿½ï¿½ï¿½È°ï¿½ï¿½É¶ï¿½
+    private bool isPaused = false; // ï¿½Oï¿½_ï¿½ï¿½ï¿½bï¿½È°ï¿½
 
     private Animator animator;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>(); // Àò¨ú NavMeshAgent
+        agent = GetComponent<NavMeshAgent>(); // ï¿½ï¿½ï¿½ NavMeshAgent
 
-        // ³]©w¨C­Ó NPC ªº°ß¤@°_©l¨¤«×
-        startAngle = (Mathf.PI * 2 / totalNPCs) * npcIndex; // ®Ú¾Ú½s¸¹­pºâ¥­§¡¤À°tªº¨¤«×
-        angle = startAngle; // ±Nªì©l¨¤«×§@¬°·í«e¨¤«×
+        // ï¿½]ï¿½wï¿½Cï¿½ï¿½ NPC ï¿½ï¿½ï¿½ß¤@ï¿½_ï¿½lï¿½ï¿½ï¿½ï¿½
+        startAngle = (Mathf.PI * 2 / totalNPCs) * npcIndex; // ï¿½Ú¾Ú½sï¿½ï¿½ï¿½pï¿½â¥­ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        angle = startAngle; // ï¿½Nï¿½ï¿½lï¿½ï¿½ï¿½×§@ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
 
-        // ­pºâ¨µÅÞªº°_©l¦ì¸m®y¼Ð
+        // ï¿½pï¿½â¨µï¿½Þªï¿½ï¿½_ï¿½lï¿½ï¿½mï¿½yï¿½ï¿½
         float startX = center.x + Mathf.Cos(startAngle) * radius;
         float startZ = center.z + Mathf.Sin(startAngle) * radius;
         patrolStartPosition = new Vector3(startX, transform.position.y, startZ);
 
-        // ±N NPC ²¾°Ê¨ì°_©l¦ì¸m
+        // ï¿½N NPC ï¿½ï¿½ï¿½Ê¨ï¿½_ï¿½lï¿½ï¿½m
         transform.position = patrolStartPosition;
 
-        // ³]©w NPC ´Â¦V¶ê¤ß
+        // ï¿½]ï¿½w NPC ï¿½Â¦Vï¿½ï¿½ï¿½
         Vector3 directionToCenter = (center - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(directionToCenter);
 
-        Debug.Log($"NPC {npcIndex} ¨µÅÞ°_©l¦ì¸m: {patrolStartPosition}");
+        //Debug.Log($"NPC {npcIndex} ï¿½ï¿½ï¿½Þ°_ï¿½lï¿½ï¿½m: {patrolStartPosition}");
 
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // §PÂ_ª±®a¬O§_¶i¤JÄµ§Ù½d³ò»Pµø³¥½d³ò
+        // ï¿½Pï¿½_ï¿½ï¿½ï¿½aï¿½Oï¿½_ï¿½iï¿½JÄµï¿½Ù½dï¿½ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
         Vector3 directionToPlayer = player.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
@@ -68,7 +68,7 @@ public class Villagers : MonoBehaviour
         {
             if (!isPaused && !isRetreating)
             {
-                StartPauseAndFacePlayer(directionToPlayer); // ¶}©l¼È°±¨Ã­±¦Vª±®a
+                StartPauseAndFacePlayer(directionToPlayer); // ï¿½}ï¿½lï¿½È°ï¿½ï¿½Ã­ï¿½ï¿½Vï¿½ï¿½ï¿½a
             }
         }
         else
@@ -86,7 +86,7 @@ public class Villagers : MonoBehaviour
             }
         }
 
-        // ³B²z¼È°±­p®É
+        // ï¿½Bï¿½zï¿½È°ï¿½ï¿½pï¿½ï¿½
         if (isPaused)
         {
             pauseTimer -= Time.deltaTime;
@@ -100,17 +100,17 @@ public class Villagers : MonoBehaviour
     bool IsPlayerInFieldOfView(Vector3 directionToPlayer)
     {
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-        return angleToPlayer <= fieldOfView / 2; // ÀË¬d¬O§_¦bµø³¥½d³ò¤º
+        return angleToPlayer <= fieldOfView / 2; // ï¿½Ë¬dï¿½Oï¿½_ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
     }
 
     void StartPauseAndFacePlayer(Vector3 directionToPlayer)
     {
         isPaused = true;
         animator.SetBool("IsTerrified", true);
-        pauseTimer = 1f; // ³]©w¼È°±®É¶¡¬° 2 ¬í
-        agent.isStopped = true; // °±¤î NavMeshAgent ªº²¾°Ê
+        pauseTimer = 1f; // ï¿½]ï¿½wï¿½È°ï¿½ï¿½É¶ï¿½ï¿½ï¿½ 2 ï¿½ï¿½
+        agent.isStopped = true; // ï¿½ï¿½ï¿½ï¿½ NavMeshAgent ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-        // ­pºâ¨Ã³]¸m­±¦Vª±®aªº±ÛÂà
+        // ï¿½pï¿½ï¿½Ã³]ï¿½mï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Vector3 lookDirection = directionToPlayer.normalized;
         Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
         transform.rotation = lookRotation;
@@ -119,11 +119,11 @@ public class Villagers : MonoBehaviour
     void EndPauseAndStartRetreat(Vector3 directionToPlayer)
     {
         isPaused = false;
-        isRetreating = true; // ¶}©lºM°hª¬ºA
+        isRetreating = true; // ï¿½}ï¿½lï¿½Mï¿½hï¿½ï¿½ï¿½A
         animator.SetBool("IsRetreating", true );
-        agent.isStopped = false; // «ì´_ NavMeshAgent ªº²¾°Ê
+        agent.isStopped = false; // ï¿½ï¿½_ NavMeshAgent ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         agent.speed = runSpeed;
-        agent.SetDestination(retreatPoint.position); // ³]¸mºM°h¥Ø¼Ð
+        agent.SetDestination(retreatPoint.position); // ï¿½]ï¿½mï¿½Mï¿½hï¿½Ø¼ï¿½
     }
 
     void HandleReturnToPatrol()
@@ -140,7 +140,7 @@ public class Villagers : MonoBehaviour
         else if (isReturningToPatrol)
         {
             isReturningToPatrol = false;
-            angle = startAngle; // «ì´_¨ì©T©wªº¨µÅÞ°_©l¨¤«×
+            angle = startAngle; // ï¿½ï¿½_ï¿½ï¿½Tï¿½wï¿½ï¿½ï¿½ï¿½ï¿½Þ°_ï¿½lï¿½ï¿½ï¿½ï¿½
             PatrolAroundPoint();
         }
     }
@@ -165,7 +165,7 @@ public class Villagers : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, alertRadius);
 
-        // µe¥Xµø³¥½d³ò
+        // ï¿½eï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
         Vector3 leftBoundary = Quaternion.Euler(0, -fieldOfView, 0) * transform.forward * alertRadius;
         Vector3 rightBoundary = Quaternion.Euler(0, fieldOfView, 0) * transform.forward * alertRadius;
 

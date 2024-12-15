@@ -92,20 +92,29 @@ public class ItemPickup : MonoBehaviour
 
     void PickupItem()
     {
-        itemCount++; // 增加拾取數量
-
-        if (itemCountText != null)
+        GameObject[] numberItems = GameObject.FindGameObjectsWithTag("Items");
+        foreach (GameObject Items in numberItems)
         {
-            itemCountText.text = $"{itemCount}";
-        }
+            itemCount++; // 增加拾取數量
 
-        if (playerLight != null)
-        {
-            playerLight.intensity += lightIntensityIncrement;
+            if (itemCountText != null)
+            {
+                itemCountText.text = $"{itemCount}";
+
+            }
+
+            if (playerLight != null)
+            {
+                playerLight.intensity += lightIntensityIncrement;
+            }
+            Destroy(gameObject);
         }
+        
+
+        
 
         HidePickupMessage();
-        Destroy(gameObject);
+        
     }
 }
 
