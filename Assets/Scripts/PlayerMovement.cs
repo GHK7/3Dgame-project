@@ -30,16 +30,13 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip runSound; // 跑步音效
     private bool isPlayingRunSound = false; // 確保跑步音效不重複播放
     private Animator animator;
-
+    
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-
         animator = GetComponent<Animator>();  // 获取动画组件
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 檢查是否著地
@@ -50,54 +47,40 @@ public class PlayerMovement : MonoBehaviour
             dashCooldownTimer -= Time.deltaTime;
         }
 
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        // 接收鍵盤或手柄的移動輸入
+        float x = Input.GetAxis("Horizontal"); // 鍵盤和手柄共用
+        float z = Input.GetAxis("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
+
         if (isDashing)
         {
             controller.Move(transform.forward * dashSpeed * Time.deltaTime);
         }
-        else
-        {
-            //controller.Move(move * speed * Time.deltaTime);
-        }
-
-        
 
         // 當角色在地面上並向下移動時重設Y方向速度
         if (isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f;  // 避免重力持續累加
+            velocity.y = -2f;
         }
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction = new Vector3(x, 0f, z).normalized;
 
         // 跳躍
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if ((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.JoystickButton0)) && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            //Debug.Log("Jump");
             animator.SetBool("isRunning", false);
             animator.SetBool("isIdle", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && dashCooldownTimer <= 0 && move.magnitude > 0)
+        // 手柄按鍵支援：F 鍵或手柄按鈕 B (JoystickButton1) 啟動 Dash
+        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1)) && dashCooldownTimer <= 0 && move.magnitude > 0)
         {
             StartCoroutine(Dash());
-
         }
 
         // 重力影響
         velocity.y += gravity * Time.deltaTime;
-
-        // 當方向為零時停止水平速度
-        if (direction.magnitude < 0.1f)
-        {
-            velocity.x = 0f;
-            velocity.z = 0f;
-        }
 
         controller.Move(velocity * Time.deltaTime);
 
@@ -125,32 +108,36 @@ public class PlayerMovement : MonoBehaviour
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
             animator.SetBool("isRunning", true);
             animator.SetBool("isIdle", false);
-            
         }
         else
         {
-            
             animator.SetBool("isRunning", false);
             animator.SetBool("isIdle", true);
         }
     }
+
     private IEnumerator Dash()
     {
         isDashing = true;
         dashCooldownTimer = dashCooldown;
-        if (audioSource.isPlaying && audioSource.isPlaying)
+
+        if (audioSource.isPlaying)
         {
             audioSource.Stop(); // 停止跑步音效
             isPlayingRunSound = false;
-            animator.SetBool("isRunning", false);
         }
+
+        animator.SetBool("isRunning", false);
+
         yield return new WaitForSeconds(dashDuration);
+
         isDashing = false;
     }
+
 }

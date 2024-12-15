@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     private AudioSource audioSource; // 音效來源
     public AudioClip ButtonSound;
 
+
     private void Start()
     {
         // 初始化音量 Slider，假設音量預設為1
@@ -27,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         // 檢查鍵盤的 Escape 鍵
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             TogglePause();
             audioSource.clip = ButtonSound;
@@ -42,6 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePause()
     {
+
         if (isPaused)
         {
             Resume();
