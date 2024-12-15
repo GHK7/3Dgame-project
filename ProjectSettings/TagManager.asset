@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Enemy
   - Items
+  - Number
   layers:
   - Default
   - TransparentFX

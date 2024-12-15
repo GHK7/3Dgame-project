@@ -3704,7 +3704,7 @@ GameObject:
   - component: {fileID: 114947125}
   m_Layer: 5
   m_Name: itemCountText
-  m_TagString: Untagged
+  m_TagString: Number
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81888,7 +81888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &919132149186883517
 GameObject:
   m_ObjectHideFlags: 0
