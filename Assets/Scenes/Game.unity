@@ -28844,6 +28844,7 @@ MonoBehaviour:
   volumeSlider: {fileID: 1421906109}
   pauseButton: {fileID: 1320031703}
   ButtonSound: {fileID: 8300000, guid: 7ab6ed0a115e7b246bf636636593fe03, type: 3}
+  soundEffectSource: {fileID: 483405231}
 --- !u!82 &547734751
 AudioSource:
   m_ObjectHideFlags: 0
@@ -38921,7 +38922,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 400
+    m_MaxSpeed: 300
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -81888,7 +81889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &919132149186883517
 GameObject:
   m_ObjectHideFlags: 0
