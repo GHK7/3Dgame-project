@@ -3,27 +3,27 @@ using UnityEngine.AI;
 
 public class EnemyAI2 : MonoBehaviour
 {
-    public float rotationAngle = 90f; // ¨C¦¸±ÛÂàªº¨¤«×
-    public float interval = 3f; // ±ÛÂàªº¶¡¹j®É¶¡¡]¬í¡^
-    public float rotationSpeed = 90f; // ¥­·Æ±ÛÂàªº³t«×¡]«×/¬í¡^
+    public float rotationAngle = 90f; // ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½àªºï¿½ï¿½ï¿½ï¿½
+    public float interval = 3f; // ï¿½ï¿½ï¿½àªºï¿½ï¿½ï¿½jï¿½É¶ï¿½ï¿½]ï¿½ï¿½^
+    public float rotationSpeed = 90f; // ï¿½ï¿½ï¿½Æ±ï¿½ï¿½àªºï¿½tï¿½×¡]ï¿½ï¿½/ï¿½ï¿½^
     public float timer = 0f;
 
     [Header("Chase Settings")]
     public GameObject player;
-    public float viewAngle = 25f;     // µø³¥¨¤«×
-    public LayerMask obstacleLayer;  // »ÙÃªª«¼h¯Å
-    public float chaseSpeed = 3.5f;  // °lÀ»³t«×
+    public float viewAngle = 25f;     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public LayerMask obstacleLayer;  // ï¿½ï¿½Ãªï¿½ï¿½ï¿½hï¿½ï¿½
+    public float chaseSpeed = 3.5f;  // ï¿½lï¿½ï¿½ï¿½tï¿½ï¿½
 
     private NavMeshAgent agent;
-    private float targetYRotation; // ¥Ø¼Ð Y ¶b±ÛÂà¨¤«×
+    private float targetYRotation; // ï¿½Ø¼ï¿½ Y ï¿½bï¿½ï¿½ï¿½à¨¤ï¿½ï¿½
  
     private bool isRotating = false;
-    private bool isChasing = false;  // ·í«e¼Ò¦¡ª¬ºA
+    private bool isChasing = false;  // ï¿½ï¿½eï¿½Ò¦ï¿½ï¿½ï¿½ï¿½A
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        // ªì©l¤Æ¥Ø¼Ð¨¤«×¬°·í«eª«¥óªº Y ¶b±ÛÂà¨¤«×
+        // ï¿½ï¿½lï¿½Æ¥Ø¼Ð¨ï¿½ï¿½×¬ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ Y ï¿½bï¿½ï¿½ï¿½à¨¤ï¿½ï¿½
         targetYRotation = transform.eulerAngles.y;
         TurnAround();
     }
@@ -41,17 +41,17 @@ public class EnemyAI2 : MonoBehaviour
     }
     private void PatrolMode()
     {
-        // §PÂ_¬O§_µo²{ª±®a
+        // ï¿½Pï¿½_ï¿½Oï¿½_ï¿½oï¿½{ï¿½ï¿½ï¿½a
         Vector3 directionToPlayer = player.transform.position - transform.position;
 
         if (Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle)
         {
-            Debug.Log("Chase");
-            // ¨Ï¥Î Raycast ÀË¬d¬O§_¦³»ÙÃªª«¾B¾×
+            //Debug.Log("Chase");
+            // ï¿½Ï¥ï¿½ Raycast ï¿½Ë¬dï¿½Oï¿½_ï¿½ï¿½ï¿½ï¿½Ãªï¿½ï¿½ï¿½Bï¿½ï¿½
             if (!Physics.Raycast(transform.position, directionToPlayer.normalized, 1000,obstacleLayer))
             {
                 
-                // µo²{ª±®a¡A¤Á´«¨ì°lÀ»¼Ò¦¡
+                // ï¿½oï¿½{ï¿½ï¿½ï¿½aï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½Ò¦ï¿½
                 StartChasing();
                 return;
             }
@@ -62,10 +62,10 @@ public class EnemyAI2 : MonoBehaviour
     {
         Vector3 directionToPlayer = player.transform.position - transform.position;
         
-        // §ó·s°lÀ»¥Ø¼Ð
+        // ï¿½ï¿½sï¿½lï¿½ï¿½ï¿½Ø¼ï¿½
         agent.SetDestination(player.transform.position);
 
-        // ¦pªGª±®aÂ÷¶}µø³¥½d³ò¡A¤Á¦^¨µÅÞ¼Ò¦¡
+        // ï¿½pï¿½Gï¿½ï¿½ï¿½aï¿½ï¿½ï¿½}ï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½Aï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½Þ¼Ò¦ï¿½
         if (Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) >= viewAngle)
         {
             StopChasing();
@@ -74,39 +74,39 @@ public class EnemyAI2 : MonoBehaviour
     private void StartChasing()
     {
         isChasing = true;
-        agent.speed = chaseSpeed; // ¤Á´«¨ì°lÀ»³t«×
+        agent.speed = chaseSpeed; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½ï¿½ï¿½tï¿½ï¿½
     }
 
     private void StopChasing()
     {
         isChasing = false;
-        TurnAround(); // Ä~Äò¨µÅÞ
+        TurnAround(); // ï¿½~ï¿½ï¿½ï¿½ï¿½
     }
     private void TurnAround()
     {
-        // ²Ö­p®É¶¡
+        // ï¿½Ö­pï¿½É¶ï¿½
         if (!isRotating)
         {
             timer += Time.deltaTime;
 
-            // ¨C¹j«ü©wªº®É¶¡¶}©l±ÛÂà
+            // ï¿½Cï¿½jï¿½ï¿½ï¿½wï¿½ï¿½ï¿½É¶ï¿½ï¿½}ï¿½lï¿½ï¿½ï¿½ï¿½
             if (timer >= interval)
             {
-                targetYRotation += rotationAngle; // §ó·s¥Ø¼Ð¨¤«×
+                targetYRotation += rotationAngle; // ï¿½ï¿½sï¿½Ø¼Ð¨ï¿½ï¿½ï¿½
                 isRotating = true;
-                timer = 0f; // ­«¸m­p®É¾¹
+                timer = 0f; // ï¿½ï¿½ï¿½mï¿½pï¿½É¾ï¿½
             }
         }
         else
         {
-            // ¥­·Æ±ÛÂà¨ì¥Ø¼Ð¨¤«×
+            // ï¿½ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½Ø¼Ð¨ï¿½ï¿½ï¿½
             float currentYRotation = Mathf.LerpAngle(transform.eulerAngles.y, targetYRotation, rotationSpeed * Time.deltaTime / rotationAngle);
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, currentYRotation, transform.eulerAngles.z);
 
-            // ÀË¬d¬O§_¹F¨ì¥Ø¼Ð¨¤«×
+            // ï¿½Ë¬dï¿½Oï¿½_ï¿½Fï¿½ï¿½Ø¼Ð¨ï¿½ï¿½ï¿½
             if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, targetYRotation)) < 0.1f)
             {
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, targetYRotation, transform.eulerAngles.z); // ºë½T³]©w¬°¥Ø¼Ð¨¤«×
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, targetYRotation, transform.eulerAngles.z); // ï¿½ï¿½Tï¿½]ï¿½wï¿½ï¿½ï¿½Ø¼Ð¨ï¿½ï¿½ï¿½
                 isRotating = false;
             }
         }
@@ -115,7 +115,7 @@ public class EnemyAI2 : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
 
-        // µe¥Xµø³¥½d³ò
+        // ï¿½eï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½dï¿½ï¿½
         Vector3 leftBoundary = Quaternion.Euler(0, -viewAngle, 0) * transform.forward;
         Vector3 rightBoundary = Quaternion.Euler(0, viewAngle, 0) * transform.forward;
 

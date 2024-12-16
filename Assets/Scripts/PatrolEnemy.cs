@@ -43,12 +43,12 @@ public class PatrolEnemy : MonoBehaviour
         if (isChasing)
         {
             ChaseMode();
-            Debug.Log("Chase");
+            //Debug.Log("Chase");
         }
         if (!isChasing)
         {
             PatrolMode();
-            Debug.Log("Patrol");
+            //Debug.Log("Patrol");
         }
     }
 

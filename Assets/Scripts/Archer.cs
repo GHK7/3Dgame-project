@@ -27,7 +27,7 @@ public class detect : MonoBehaviour
         if (detected)
         {
             animator.SetBool("IsShooting",true);
-            Debug.Log("射箭");
+            //Debug.Log("射箭");
             enemy.LookAt(target.transform);
         }
         else

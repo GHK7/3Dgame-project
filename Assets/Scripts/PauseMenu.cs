@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseButton;
     private AudioSource audioSource; // 音效來源
     public AudioClip ButtonSound;
+    public AudioSource soundEffectSource;
+
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         // 檢查鍵盤的 Escape 鍵
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7) && !EventSystem.current.IsPointerOverGameObject())
         {
             TogglePause();
             audioSource.clip = ButtonSound;
@@ -42,6 +45,7 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePause()
     {
+
         if (isPaused)
         {
             Resume();
@@ -57,6 +61,10 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false); // 隱藏暫停選單
         pauseButton.SetActive(true);
         Time.timeScale = 1; // 恢復遊戲時間
+        if (soundEffectSource != null)
+        {
+            soundEffectSource.UnPause(); // 恢復音效播放
+        }
         isPaused = false;
     }
 
@@ -64,6 +72,10 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenuUI.SetActive(true); // 顯示暫停選單
         Time.timeScale = 0; // 暫停遊戲時間
+        if (soundEffectSource != null)
+        {
+            soundEffectSource.Pause(); // 暫停音效播放
+        }
         isPaused = true;
     }
 

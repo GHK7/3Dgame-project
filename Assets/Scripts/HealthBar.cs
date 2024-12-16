@@ -11,13 +11,13 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        SetMaxHealth(maxHealths);  //ªì©l¥Í©R­È
+        SetMaxHealth(maxHealths);  //ï¿½ï¿½lï¿½Í©Rï¿½ï¿½
     }
     private void Update()
     {
-        if (slider.value == 0)  //·Æ±ø­È==0
+        if (slider.value == 0)  //ï¿½Æ±ï¿½ï¿½ï¿½==0
         {
-            EndGame();  //µ²§ô¹CÀ¸ÅÞ¿è
+            EndGame();  //ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Þ¿ï¿½
         }
     }
     public void SetMaxHealth(int health)
@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
         slider.maxValue = health;
         slider.value = health;
     }
-    public void beenAttacked(int damage)//³Q§ðÀ»
+    public void beenAttacked(int damage)//ï¿½Qï¿½ï¿½ï¿½ï¿½
     {
         slider.value -= damage;
     }
