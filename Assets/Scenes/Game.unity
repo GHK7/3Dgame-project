@@ -131,7 +131,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 14368322}
-  - component: {fileID: 14368321}
   - component: {fileID: 14368320}
   m_Layer: 0
   m_Name: itemYellow
@@ -397,11 +396,14 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 19.140245
   m_Center: {x: 0, y: -0.5936315, z: 0}
-<<<<<<< HEAD
+
+
 --- !u!1001 &30024419
-=======
+
+
+
 --- !u!1001 &47570577
->>>>>>> parent of face953 (撿東西)
+
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -531,7 +533,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD
+
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &30024423
@@ -670,10 +672,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 39.70434, y: 31.690351, z: 62.774372}
   m_Center: {x: 16.447386, y: 15.345179, z: -27.813026}
-=======
+
   m_Size: {x: 10.447747, y: 13.663969, z: 13.596963}
   m_Center: {x: 0.03351484, y: 0.7035549, z: 6.298482}
->>>>>>> parent of face953 (撿東西)
+
+
+
+
 --- !u!1 &52121721
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,8 +4330,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142731706}
   m_Mesh: {fileID: 8691780276856062721, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1001 &145576365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4804,7 +4809,9 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.447747, y: 13.663969, z: 13.596963}
   m_Center: {x: 0.03351484, y: 0.7035549, z: 6.298482}
->>>>>>> parent of face953 (撿東西)
+
+
+
 --- !u!1 &158008878
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,8 +5087,9 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-<<<<<<< HEAD
-=======
+
+
+
 --- !u!1001 &181688335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5559,7 +5567,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.447747, y: 13.663969, z: 13.596963}
   m_Center: {x: 0.03351484, y: 0.7035549, z: 6.298482}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &183546598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,8 +5702,8 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1001 &185932562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6254,7 +6262,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0b2b49499d7d44ea84c225297a2901, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &196825056
 GameObject:
   m_ObjectHideFlags: 0
@@ -12249,7 +12257,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.40610665, y: 6.8934913, z: 10.294294}
   m_Center: {x: -3.545462, y: 3.260337, z: 6.4310946}
-<<<<<<< HEAD
+
+
 --- !u!1001 &242053655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12388,8 +12397,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.992435, y: 19.008818, z: 26.95517}
   m_Center: {x: 0.018866925, y: 0.79252076, z: -13.336259}
-=======
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &245080547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13164,7 +13172,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291542040}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-<<<<<<< HEAD
+
+
 --- !u!1001 &294350786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13278,15 +13287,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &294350789
 BoxCollider:
-=======
+
+
+
 --- !u!1 &301356348
 GameObject:
->>>>>>> parent of face953 (撿東西)
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 294350787}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -13298,7 +13309,7 @@ GameObject:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-=======
+
   serializedVersion: 6
   m_Component:
   - component: {fileID: 301356349}
@@ -13333,7 +13344,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301356348}
->>>>>>> parent of face953 (撿東西)
+
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -25257,8 +25268,9 @@ MonoBehaviour:
   pickupText: {fileID: 0}
   playerLight: {fileID: 1419112505}
   lightIntensityIncrement: 0.3
-<<<<<<< HEAD
-=======
+
+
+
 --- !u!1 &488355698
 GameObject:
   m_ObjectHideFlags: 0
@@ -25342,7 +25354,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 488355698}
   m_Mesh: {fileID: 8691780276856062721, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!4 &488777658 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4426767572633432455, guid: fe0b2b49499d7d44ea84c225297a2901, type: 3}
@@ -26179,11 +26191,14 @@ Transform:
   m_GameObject: {fileID: 519512279}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
+
   m_LocalPosition: {x: -558.4, y: 5.63, z: 275.2}
-=======
+
   m_LocalPosition: {x: -844.7, y: 5.63, z: 165}
->>>>>>> parent of face953 (撿東西)
+
+
+  m_LocalPosition: {x: -844.7, y: 5.63, z: 165}
+
   m_LocalScale: {x: 3.01, y: 4.67, z: 3.01}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -26670,11 +26685,15 @@ Transform:
   m_GameObject: {fileID: 554919333}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< HEAD
+
+
   m_LocalPosition: {x: -763.2599, y: 0, z: 687.1}
-=======
+
   m_LocalPosition: {x: -763.2599, y: 0, z: 844}
->>>>>>> parent of face953 (撿東西)
+
+
+  m_LocalPosition: {x: -763.2599, y: 0, z: 844}
+
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27911,7 +27930,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
+
 --- !u!1001 &619115361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28008,15 +28027,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &619115363
 BoxCollider:
-=======
+
 --- !u!1 &615735625
 GameObject:
->>>>>>> parent of face953 (撿東西)
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
   m_GameObject: {fileID: 619115362}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -28032,7 +28051,6 @@ GameObject:
   serializedVersion: 3
   m_Size: {x: 39.70434, y: 31.690351, z: 62.774372}
   m_Center: {x: 16.447386, y: 15.345179, z: -27.813026}
-=======
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615735626}
@@ -28110,7 +28128,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615735625}
   m_Mesh: {fileID: -8024611349946882221, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
->>>>>>> parent of face953 (撿東西)
+
+
 --- !u!1 &639613501
 GameObject:
   m_ObjectHideFlags: 0
@@ -34386,11 +34405,13 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-<<<<<<< HEAD
+
   m_Color: {r: 0.10188681, g: 0.10188681, b: 0.10188681, a: 1}
-=======
+
   m_Color: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
->>>>>>> parent of face953 (撿東西)
+
+  m_Color: {r: 0.5622641, g: 0.5622641, b: 0.5622641, a: 1}
+
   m_Intensity: 1.43
   m_Range: 10
   m_SpotAngle: 30
@@ -36015,7 +36036,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4150d98695f852e4d8f4d024f324b2bd, type: 3}
-<<<<<<< HEAD
+
 --- !u!1001 &788768890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36169,8 +36190,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7989112, y: 0.66137093, z: 0.45072266}
   m_Center: {x: 0.35039657, y: -0.27789053, z: 0.0006624984}
-=======
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &791882653
 GameObject:
   m_ObjectHideFlags: 0
@@ -36298,11 +36318,13 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.0056602955, b: 0.0056602955, a: 1}
-<<<<<<< HEAD
+
   m_Intensity: 4.5
-=======
+
   m_Intensity: 3.88
->>>>>>> parent of face953 (撿東西)
+
+  m_Intensity: 3.88
+
   m_Range: 140
   m_SpotAngle: 90
   m_InnerSpotAngle: 9
@@ -37674,8 +37696,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51e34239a83750949baf16d8219d786a, type: 3}
   m_PrefabInstance: {fileID: 837558703}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &845598852
 GameObject:
   m_ObjectHideFlags: 0
@@ -37759,7 +37781,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845598852}
   m_Mesh: {fileID: -1407623660032272785, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &857458663
 GameObject:
   m_ObjectHideFlags: 0
@@ -38007,11 +38029,13 @@ PrefabInstance:
       objectReference: {fileID: -7710537178321752619, guid: 10dbd1611efa4a24eaf92056343e192c, type: 3}
     - target: {fileID: -8679921383154817045, guid: a41eb7a3b71708d4aad2de01e97e347f, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
+
       value: 809.8
-=======
+
       value: 483.3
->>>>>>> parent of face953 (撿東西)
+
+      value: 483.3
+
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a41eb7a3b71708d4aad2de01e97e347f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38019,11 +38043,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a41eb7a3b71708d4aad2de01e97e347f, type: 3}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
+
       value: 597
-=======
+
       value: 397.8
->>>>>>> parent of face953 (撿東西)
+
+      value: 397.8
+
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a41eb7a3b71708d4aad2de01e97e347f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39671,8 +39697,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51e34239a83750949baf16d8219d786a, type: 3}
   m_PrefabInstance: {fileID: 998473937}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &1003752974
 GameObject:
   m_ObjectHideFlags: 0
@@ -39756,7 +39782,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003752974}
   m_Mesh: {fileID: -1407623660032272785, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &1004171927
 GameObject:
   m_ObjectHideFlags: 0
@@ -39850,9 +39876,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-<<<<<<< HEAD
+
   m_LocalEulerAnglesHint: {x: 0, y: -138.826, z: 0}
-=======
+
   m_LocalEulerAnglesHint: {x: 0, y: -119.149, z: 0}
 --- !u!1001 &1010235476
 PrefabInstance:
@@ -40192,7 +40218,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4426767572633432455, guid: fe0b2b49499d7d44ea84c225297a2901, type: 3}
   m_PrefabInstance: {fileID: 870273099}
   m_PrefabAsset: {fileID: 0}
->>>>>>> parent of face953 (撿東西)
+
+
 --- !u!1 &1038330998
 GameObject:
   m_ObjectHideFlags: 0
@@ -45536,8 +45563,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 191.44482, y: 245.88809, z: 195.918}
   m_Center: {x: -1.0600848, y: 89.936066, z: -170.15749}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &1268239334
 GameObject:
   m_ObjectHideFlags: 0
@@ -45621,7 +45648,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268239334}
   m_Mesh: {fileID: -5308210633308118684, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &1274462319
 GameObject:
   m_ObjectHideFlags: 3
@@ -46783,7 +46810,7 @@ Transform:
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
+
   m_Modification:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
@@ -46893,7 +46920,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1377311615
 BoxCollider:
-=======
+
   m_LocalRotation: {x: 0.7071068, y: -0.7071067, z: 0.000000053385072, w: -0.00000005338508}
   m_LocalPosition: {x: 8.825784, y: 2.48, z: -26.425303}
   m_LocalScale: {x: 24.460176, y: 24.460176, z: 24.460176}
@@ -46903,12 +46930,11 @@ BoxCollider:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1393000206
 MeshRenderer:
->>>>>>> parent of face953 (撿東西)
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1377311613}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -46926,7 +46952,7 @@ MeshRenderer:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &1377311616
 BoxCollider:
-=======
+
   m_GameObject: {fileID: 1393000204}
   m_Enabled: 1
   m_CastShadows: 1
@@ -46965,12 +46991,13 @@ BoxCollider:
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1393000207
 MeshFilter:
->>>>>>> parent of face953 (撿東西)
+
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
+
   m_GameObject: {fileID: 1377311614}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -47292,10 +47319,14 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7989112, y: 0.66137093, z: 0.45072266}
   m_Center: {x: 0.35039657, y: -0.27789053, z: 0.0006624984}
-=======
+
   m_GameObject: {fileID: 1393000204}
   m_Mesh: {fileID: 6239881831769578202, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
->>>>>>> parent of face953 (撿東西)
+
+
+  m_GameObject: {fileID: 1393000204}
+  m_Mesh: {fileID: 6239881831769578202, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
+
 --- !u!1 &1419112504
 GameObject:
   m_ObjectHideFlags: 0
@@ -47730,8 +47761,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457366204}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &1466808063
 GameObject:
   m_ObjectHideFlags: 0
@@ -48769,7 +48800,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.447747, y: 13.663969, z: 13.596963}
   m_Center: {x: 0.03351484, y: 0.7035549, z: 6.298482}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1001 &1471032475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53997,13 +54028,14 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD
+
   m_Radius: 0.053498607
   m_Center: {x: 0.53659034, y: 0.5349969, z: 0.0040340796}
-=======
+
   m_Radius: 0.15981184
   m_Center: {x: 0.5365917, y: 0.50967145, z: -0.021511288}
->>>>>>> parent of face953 (撿東西)
+
+
 --- !u!114 &1521672854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54691,7 +54723,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 191.44482, y: 245.88809, z: 195.918}
   m_Center: {x: -1.0600848, y: 89.936066, z: -170.15749}
-<<<<<<< HEAD
+
 --- !u!1001 &1543178586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54807,8 +54839,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 39.70434, y: 31.690351, z: 62.774372}
   m_Center: {x: 16.447386, y: 15.345179, z: -27.813026}
-=======
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &1561962391
 GameObject:
   m_ObjectHideFlags: 0
@@ -55323,11 +55354,11 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD
+
   m_Size: {x: 5.0726194, y: 8.337194, z: 8.53293}
   m_Center: {x: -4.584532, y: -4.2690387, z: 3.8963544}
 --- !u!65 &1608367094
-=======
+
   m_Size: {x: 10.447747, y: 13.663969, z: 13.596963}
   m_Center: {x: 0.03351484, y: 0.7035549, z: 6.298482}
 --- !u!1001 &1607145763
@@ -55782,7 +55813,7 @@ Transform:
   m_PrefabInstance: {fileID: 1607145763}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &1607145765
->>>>>>> parent of face953 (撿東西)
+
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56827,7 +56858,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 51e34239a83750949baf16d8219d786a, type: 3}
   m_PrefabInstance: {fileID: 1641181539}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
+
 --- !u!1001 &1644090350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56981,8 +57012,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7989112, y: 0.66137093, z: 0.45072266}
   m_Center: {x: 0.35039657, y: -0.27789053, z: 0.0006624984}
-=======
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &1656591119
 GameObject:
   m_ObjectHideFlags: 0
@@ -62713,8 +62743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &1751077784
 GameObject:
   m_ObjectHideFlags: 0
@@ -62881,7 +62911,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762392479}
   m_Mesh: {fileID: 8691780276856062721, guid: bf0143064dbe4e34993edd83304d586b, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1001 &1790460716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63363,13 +63393,13 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-<<<<<<< HEAD
+
   m_Radius: 213.99669
   m_Center: {x: 0, y: 5.805515, z: 0}
-=======
+
   m_Radius: 274.61917
   m_Center: {x: 0, y: 15.377398, z: 0}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1001 &1870278470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68547,11 +68577,12 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-<<<<<<< HEAD
+
 --- !u!1001 &1896785602
-=======
+
+
 --- !u!1001 &1900367419
->>>>>>> parent of face953 (撿東西)
+
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -69515,8 +69546,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7529bbd0d5d83d3448092967983c47a0, type: 3}
   m_PrefabInstance: {fileID: 1939888167}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
+
+
 --- !u!1 &1947288308
 GameObject:
   m_ObjectHideFlags: 0
@@ -70576,7 +70607,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989918128}
   m_Mesh: {fileID: -5746147162638082140, guid: 59d78833ad6f44b4c93d6b4e92fea02a, type: 3}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!4 &2017434389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4150d98695f852e4d8f4d024f324b2bd, type: 3}
@@ -71102,8 +71133,7 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
-<<<<<<< HEAD
-=======
+
 --- !u!1001 &2055900508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71492,7 +71522,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20.771725, y: 15.919312, z: 27.558668}
   m_Center: {x: 0.11314211, y: 6.461465, z: -13.659632}
->>>>>>> parent of face953 (撿東西)
+
 --- !u!1 &2071310180
 GameObject:
   m_ObjectHideFlags: 0
@@ -73056,11 +73086,14 @@ Transform:
   m_GameObject: {fileID: 919132149157624677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
+
   m_LocalPosition: {x: -1057, y: 2.3, z: -587}
-=======
+
   m_LocalPosition: {x: -288, y: 2.3, z: -202}
->>>>>>> parent of face953 (撿東西)
+
+
+  m_LocalPosition: {x: -288, y: 2.3, z: -202}
+
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -77933,7 +77966,7 @@ SceneRoots:
   - {fileID: 2071310186}
   - {fileID: 1350761774}
   - {fileID: 519512285}
-<<<<<<< HEAD
+
   - {fileID: 986669348}
   - {fileID: 2049190079}
   - {fileID: 657778118}
@@ -77979,12 +78012,18 @@ SceneRoots:
   - {fileID: 30024419}
   - {fileID: 522711037}
   - {fileID: 1689963370}
-=======
+
   - {fileID: 985486582}
   - {fileID: 554919334}
   - {fileID: 1840165713}
+
+  - {fileID: 985486582}
+  - {fileID: 554919334}
+  - {fileID: 1840165713}
+
   - {fileID: 1708461937}
   - {fileID: 639613502}
   - {fileID: 2047483920}
   - {fileID: 805703970}
->>>>>>> parent of face953 (撿東西)
+
+
