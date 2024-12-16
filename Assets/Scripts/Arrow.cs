@@ -31,13 +31,13 @@ public class Arrow : MonoBehaviour
         
         if (other.tag == "Building" || other.tag == "Ground")
         {
-            Destroy(gameObject); // �P���l�u
+            Destroy(gameObject); 
             //Debug.Log("23");
         }
         else if (other.tag == "Player" )
         {
             Destroy(gameObject);
-            healthBar.beenAttacked(10);   //�I�s�ͩR�ȸ}��(�ˮ`�Ѽ�)
+            healthBar.beenAttacked(10);  
         }
     }
 }
