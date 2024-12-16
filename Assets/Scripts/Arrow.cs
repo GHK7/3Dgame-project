@@ -32,7 +32,11 @@ public class Arrow : MonoBehaviour
         if (other.tag == "Building" || other.tag == "Ground")
         {
             Destroy(gameObject); // �P���l�u
+<<<<<<< HEAD
             Debug.Log("23");
+=======
+            //Debug.Log("23");
+>>>>>>> parent of face953 (撿東西)
         }
         else if (other.tag == "Player" )
         {

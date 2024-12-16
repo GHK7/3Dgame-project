@@ -15,7 +15,7 @@ public class Villagers : MonoBehaviour
     private bool isRetreating = false;
     private bool isReturningToPatrol = false;
 
-    [Header("設定圓形運動參數")]
+    [Header("�]�w��ιB�ʰѼ�")]
     public Vector3 center = Vector3.zero; // ��ߦ�m
     public float radius = 5f; // �ꪺ�b�|
     public float speed = 2f; // ���ʳt�� (���t�סA���רC��)
@@ -25,7 +25,7 @@ public class Villagers : MonoBehaviour
     public int npcIndex; // NPC ���ߤ@�s�� (��ʳ]�m�ε{�ǥͦ�)
     public int totalNPCs = 18; // ������ NPC ���`��
 
-    [Header("巡邏起始座標（自動計算）")]
+    [Header("���ް_�l�y�С]�۰ʭp��^")]
     public Vector3 patrolStartPosition; // NPC ���ް_�l��m (�۰ʭp��)
 
     private float pauseTimer = 0f; // �O���Ȱ��ɶ�
@@ -53,7 +53,7 @@ public class Villagers : MonoBehaviour
         Vector3 directionToCenter = (center - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(directionToCenter);
 
-        Debug.Log($"NPC {npcIndex} 巡邏起始位置: {patrolStartPosition}");
+        //Debug.Log($"NPC {npcIndex} ���ް_�l��m: {patrolStartPosition}");
 
         animator = GetComponent<Animator>();
     }
