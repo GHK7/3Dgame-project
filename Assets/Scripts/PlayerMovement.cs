@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash()
+    public IEnumerator Dash()
     {
         isDashing = true;
         dashCooldownTimer = dashCooldown;
