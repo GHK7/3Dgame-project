@@ -7,6 +7,8 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
     [Header("Patrol Settings")]
     public float range; //radius of sphere
     public Transform centrePoint; //centre of the area the agent wants to move around in
+    public float stopTime = 2f;
+    public float rotationSpeed = 2;
     //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
 
     [Header("Chase Settings")]
@@ -21,9 +23,11 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
     public float alertRadius = 10f;  // 警戒半徑
     public float patrolSpeed = 15f;   // 巡邏速度
     public float chaseSpeed = 50f;  // 追擊速度
+    
 
     private NavMeshAgent agent;
     private bool isChasing = false;  // 當前模式狀態
+    private bool isAlert = false;
     public HealthBar healthBar;            //生命值
     private float lastAttackTime;
 
@@ -49,7 +53,6 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
             PatrolMode();
             //Debug.Log("Patrol");
         }
-
     }
     private void PatrolMode()
     {
@@ -57,27 +60,66 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
-        if (distanceToPlayer <= alertRadius && Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle)
+        if (distanceToPlayer <= alertRadius)
         {
-            // 使用 Raycast 檢查是否有障礙物遮擋
-            if (!Physics.Raycast(transform.position, directionToPlayer.normalized, distanceToPlayer, obstacleLayer))
+            AlertMode();
+
+            if (Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle &&
+                !Physics.Raycast(transform.position, directionToPlayer.normalized, distanceToPlayer, obstacleLayer))
             {
+                // 使用 Raycast 檢查是否有障礙物遮擋
+                
                 // 發現玩家，切換到追擊模式
                 StartChasing();
                 return;
-            }
+                
+            }                      
         }
+        else if (distanceToPlayer > alertRadius)
+        {
+            isAlert = false;
+        }
+
         if (agent.remainingDistance <= agent.stoppingDistance) //done with path
         {
-            Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
-            {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                agent.SetDestination(point);
-            }
+            RandomMove();
         }
     }
-    private void ChaseMode()
+    public void RandomMove()
+    {
+        Vector3 point;
+        if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+        {
+            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+            agent.SetDestination(point);
+        }
+    }
+    private void AlertMode()
+    {
+        if(!isAlert)
+        {
+            isAlert = true;
+            // 停止移動一段時間
+            agent.isStopped = true;
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+
+            // 等速轉向面向玩家
+            Vector3 lookDirection = directionToPlayer.normalized;
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            Invoke(nameof(ResumePatrol), stopTime); // 停止後自動恢復巡邏
+            Debug.Log("3333");
+        }
+        
+    }
+    private void ResumePatrol()
+    {
+        agent.isStopped = false;
+        RandomMove();
+        Debug.Log("4444");
+    }
+        private void ChaseMode()
     {
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
