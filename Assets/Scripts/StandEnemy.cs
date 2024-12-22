@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI2 : MonoBehaviour
+public class StandEnemy : MonoBehaviour
 {
     public float rotationAngle = 90f; // �C�����઺����
     public float interval = 3f; // ���઺���j�ɶ��]��^
@@ -13,17 +13,20 @@ public class EnemyAI2 : MonoBehaviour
     public float viewAngle = 25f;     // ��������
     public LayerMask obstacleLayer;  // ��ê���h��
     public float chaseSpeed = 3.5f;  // �l���t��
+    public int damage = 15;
+    public float attackCooldown = 2f;     // 攻击冷却时间
 
     private NavMeshAgent agent;
     private float targetYRotation; // �ؼ� Y �b���ਤ��
- 
+    private float lastAttackTime;
+    public HealthBar healthBar;
     private bool isRotating = false;
     private bool isChasing = false;  // ��e�Ҧ����A
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        // ��l�ƥؼШ��׬���e���� Y �b���ਤ��
+        
         targetYRotation = transform.eulerAngles.y;
         TurnAround();
     }
@@ -81,6 +84,15 @@ public class EnemyAI2 : MonoBehaviour
     {
         isChasing = false;
         TurnAround(); // �~����
+    }
+    void AttackPlayer()
+    {
+        if (Time.time - lastAttackTime >= attackCooldown)
+        {
+            lastAttackTime = Time.time;  //記錄攻擊時間
+            healthBar.beenAttacked(damage);   //呼叫生命值腳本(傷害參數)
+        }
+        
     }
     private void TurnAround()
     {

@@ -33,10 +33,8 @@ public class Arrow : MonoBehaviour
         {
             Destroy(gameObject); // �P���l�u
 
-            Debug.Log("23");
+            //Debug.Log("block");
 
-            //Debug.Log("23");
-             //parent of face953 (撿東西)
         }
         else if (other.tag == "Player" )
         {

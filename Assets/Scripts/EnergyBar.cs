@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
 {
+    public GameObject Player;
     public Slider slider; // 連接Slider
     public int maxEnergy = 100; // 最大體力值
     public float drainRate = 20f; // 每秒減少的體力值
@@ -15,6 +16,9 @@ public class EnergyBar : MonoBehaviour
     private void Start()
     {
         SetMaxEnergy(maxEnergy);
+
+        // 取得玩家的 PlayerMovement 元件
+        playerMovement = Player.GetComponent<PlayerMovement>();
     }
 
     private void Update()

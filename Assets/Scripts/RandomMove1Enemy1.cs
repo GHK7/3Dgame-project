@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI; //important
 
 //if you use this code you are contractually obligated to like the YT video
-public class RandomMovement : MonoBehaviour //don't forget to change the script name if you haven't
+public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the script name if you haven't
 {
     [Header("Patrol Settings")]
     public float range; //radius of sphere
@@ -35,6 +33,7 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
+
     }
 
 
@@ -90,7 +89,7 @@ public class RandomMovement : MonoBehaviour //don't forget to change the script 
         {
             AttackPlayer();
         }
-        
+
         // 如果玩家離開警戒範圍，切回巡邏模式
         if (distanceToPlayer > alertRadius)
         {
