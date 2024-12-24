@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI; //important
 
 //if you use this code you are contractually obligated to like the YT video
@@ -38,6 +39,7 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         agent = GetComponent<NavMeshAgent>();
         agent.speed = patrolSpeed;
 
+        animator = GetComponent<Animator>();
     }
 
 
@@ -99,20 +101,42 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         if(!isAlert)
         {
             isAlert = true;
-            // 停止移動一段時間
-            agent.isStopped = true;
-            Vector3 directionToPlayer = player.transform.position - transform.position;
+            agent.isStopped = true;  // 停止移動
+            //agent.updateRotation = true;  // 保持旋轉
+            //agent.SetDestination(player.transform.position);  // 讓敵人面向玩家
 
-            // 等速轉向面向玩家
-            Vector3 lookDirection = directionToPlayer.normalized;
-            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            // 啟動平滑轉向的協同程序
+            StartCoroutine(LookAtPlayer());
 
             Invoke(nameof(ResumePatrol), stopTime); // 停止後自動恢復巡邏
+            animator.SetTrigger("isLooking");
             Debug.Log("3333");
         }
         
     }
+    private IEnumerator LookAtPlayer()
+    {
+        transform.LookAt(player.transform);
+        yield return null;
+    }
+    // 協同程式：平滑轉向面向玩家
+    /*private IEnumerator SmoothLookAtPlayer()
+    {
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+        directionToPlayer.y = 0; // 忽略垂直方向
+
+        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer.normalized);
+
+        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
+        {
+            // 平滑轉向
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            yield return null; // 等待下一格
+        }
+
+        // 確保最終的朝向與目標一致
+        transform.rotation = targetRotation;
+    }*/
     private void ResumePatrol()
     {
         agent.isStopped = false;
@@ -131,11 +155,16 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         {
             AttackPlayer();
         }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
 
         // 如果玩家離開警戒範圍，切回巡邏模式
         if (distanceToPlayer > alertRadius)
         {
             StopChasing();
+            
         }
     }
     void AttackPlayer()
@@ -145,13 +174,14 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
             lastAttackTime = Time.time;  //記錄攻擊時間
             healthBar.beenAttacked(damage);   //呼叫生命值腳本(傷害參數)
         }
-
+        animator.SetBool("isAttacking", true);
     }
     private void StartChasing()
     {
         isChasing = true;
         agent.speed = chaseSpeed; // 切換到追擊速度
 
+        animator.SetBool("isChasing", true);
     }
 
     private void StopChasing()
@@ -159,7 +189,7 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         isChasing = false;
         agent.speed = patrolSpeed; // 切換到巡邏速度
 
-
+        animator.SetBool("isChasing", false);
     }
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {

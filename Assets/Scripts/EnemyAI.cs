@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(player.position, transform.position);
 
-        // 更新动画参数，设置是否在“跑动”状态
+        /*// 更新动画参数，设置是否在“跑动”状态
         if (agent.velocity.magnitude > 0.1f)
         {
             animator.SetBool("isRunning", true);
@@ -52,12 +52,14 @@ public class EnemyAI : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
             //animator.SetBool("isIdle", true);
-        }
+        }*/
 
         if (distanceToPlayer <= attackRange)  // 如果玩家在攻击范围内
         {
             AttackPlayer();
+            animator.SetTrigger("isAttack");
         }
+
     }
 
     void AttackPlayer()
@@ -83,8 +85,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    
 
+    private void OnDrawGizmosSelected()
+    {       
+        // 畫出攻擊範圍
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
     //void EndGame()
     //{
     //    //Debug.Log("Game Over! Player attacked 3 times.");
