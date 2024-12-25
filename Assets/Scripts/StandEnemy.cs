@@ -23,12 +23,16 @@ public class StandEnemy : MonoBehaviour
     private bool isRotating = false;
     private bool isChasing = false;  // ��e�Ҧ����A
 
+    private Animator animator;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         
         targetYRotation = transform.eulerAngles.y;
         TurnAround();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -78,12 +82,14 @@ public class StandEnemy : MonoBehaviour
     {
         isChasing = true;
         agent.speed = chaseSpeed; // ������l���t��
+        animator.SetBool("IsChasing", true);
     }
 
     private void StopChasing()
     {
         isChasing = false;
         TurnAround(); // �~����
+        animator.SetBool("IsChasing", false);
     }
     void AttackPlayer()
     {
@@ -107,6 +113,7 @@ public class StandEnemy : MonoBehaviour
                 targetYRotation += rotationAngle; // ��s�ؼШ���
                 isRotating = true;
                 timer = 0f; // ���m�p�ɾ�
+                animator.SetBool("IsRotating", true);
             }
         }
         else
@@ -120,6 +127,7 @@ public class StandEnemy : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.x, targetYRotation, transform.eulerAngles.z); // ��T�]�w���ؼШ���
                 isRotating = false;
+                animator.SetBool("IsRotating", false);
             }
         }
     }

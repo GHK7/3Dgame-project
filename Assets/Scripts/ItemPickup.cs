@@ -7,6 +7,7 @@ public class ItemPickup : MonoBehaviour
     public Text itemCountText; // 直接使用Text類型
     public GameObject ending;
     public GameObject pickupText; // UI 提示對象
+    public GameObject image , text;
     public Light playerLight; // 玩家頭上的光源
     public float lightIntensityIncrement = 0.3f; // 每次拾取物品增加的光強度
 
@@ -18,7 +19,9 @@ public class ItemPickup : MonoBehaviour
         
         ending.SetActive(false);             
         pickupText.SetActive(false); // 初始化時隱藏撿取提示
-        
+        image.SetActive(true);
+        text.SetActive(true);
+
         if (playerLight == null)
         {
             // 嘗試在玩家身上自動尋找光源
@@ -40,6 +43,9 @@ public class ItemPickup : MonoBehaviour
         if (itemCount == 5)
         {
             ending.SetActive(true);
+            image.SetActive(false);
+            text.SetActive(false);
+            itemCountText.text = "逃離村莊";
         }
     }
 
