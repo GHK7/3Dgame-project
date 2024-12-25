@@ -48,7 +48,7 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         if (isChasing)
         {
             ChaseMode();
-            Debug.Log("Chase");
+            //Debug.Log("Chase");
         }
         if (!isChasing)
         {
@@ -110,7 +110,7 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
 
             Invoke(nameof(ResumePatrol), stopTime); // 停止後自動恢復巡邏
             animator.SetTrigger("isLooking");
-            Debug.Log("3333");
+            //Debug.Log("3333");
         }
         
     }
@@ -141,7 +141,7 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
     {
         agent.isStopped = false;
         RandomMove();
-        Debug.Log("4444");
+        //Debug.Log("4444");
     }
         private void ChaseMode()
     {
