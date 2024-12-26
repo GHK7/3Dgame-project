@@ -48,41 +48,29 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
         if (isChasing)
         {
             ChaseMode();
-            //Debug.Log("Chase");
         }
-        if (!isChasing)
+        else if (isAlert)
+        {
+            // 警戒模式期間不需要額外操作
+        }
+        else
         {
             PatrolMode();
-            //Debug.Log("Patrol");
         }
     }
     private void PatrolMode()
     {
-        // 判斷是否發現玩家
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
         if (distanceToPlayer <= alertRadius)
         {
-            AlertMode();
-
-            if (Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle &&
-                !Physics.Raycast(transform.position, directionToPlayer.normalized, distanceToPlayer, obstacleLayer))
+            if (!isAlert)
             {
-                // 使用 Raycast 檢查是否有障礙物遮擋
-                
-                // 發現玩家，切換到追擊模式
-                StartChasing();
-                return;
-                
-            }                      
+                StartCoroutine(AlertMode()); // 進入警戒模式
+            }
         }
-        else if (distanceToPlayer > alertRadius)
-        {
-            isAlert = false;
-        }
-
-        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+        else if (agent.remainingDistance <= agent.stoppingDistance)
         {
             RandomMove();
         }
@@ -96,23 +84,53 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
             agent.SetDestination(point);
         }
     }
-    private void AlertMode()
+    private IEnumerator AlertMode()
     {
-        if(!isAlert)
+        if (!isAlert)
         {
             isAlert = true;
-            agent.isStopped = true;  // 停止移動
-            //agent.updateRotation = true;  // 保持旋轉
-            //agent.SetDestination(player.transform.position);  // 讓敵人面向玩家
-
-            // 啟動平滑轉向的協同程序
-            StartCoroutine(LookAtPlayer());
-
-            Invoke(nameof(ResumePatrol), stopTime); // 停止後自動恢復巡邏
-            animator.SetTrigger("isLooking");
-            //Debug.Log("3333");
+            agent.isStopped = true; // 停止移動
+            transform.LookAt(player.transform);
+            animator.SetTrigger("isLooking"); // 播放警戒動畫
         }
         
+        float elapsedTime = 0f;
+
+        while (elapsedTime < stopTime)
+        {
+            // 檢查是否發現玩家
+            Vector3 directionToPlayer = player.transform.position - transform.position;
+            float distanceToPlayer = directionToPlayer.magnitude;
+
+            if (distanceToPlayer <= alertRadius &&
+                Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) < viewAngle &&
+                !Physics.Raycast(transform.position, directionToPlayer.normalized, distanceToPlayer, obstacleLayer))
+            {
+                StartChasing(); // 發現玩家，進入追擊模式
+                yield break; // 結束協同程序
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // 等待下一格
+        }
+
+        ResumePatrol(); // 如果沒有發現玩家，恢復巡邏
+    }
+    // 在停止期間檢查玩家位置
+    private IEnumerator ResumePatrolAfterDelay()
+    {
+        yield return new WaitForSeconds(stopTime); // 等待指定時間
+        if (isAlert && !isChasing) // 確保敵人還在警戒狀態且未進入追擊模式
+        {
+            ResumePatrol();
+        }
+    }
+
+    private void CancelAlertMode()
+    {
+        isAlert = false; // 停止警戒
+        isAlert = false;
+        StopAllCoroutines(); // 停止協同程序（包括 LookAtPlayer 和 ResumePatrolAfterDelay）
     }
     private IEnumerator LookAtPlayer()
     {
@@ -139,12 +157,17 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
     }*/
     private void ResumePatrol()
     {
-        agent.isStopped = false;
-        RandomMove();
-        //Debug.Log("4444");
+        isAlert = false;
+        agent.isStopped = false; // 解除暫停
+        RandomMove(); // 繼續隨機巡邏
     }
-        private void ChaseMode()
+    private void ChaseMode()
     {
+        // 取消 AlertMode
+        if (isAlert)
+        {
+            CancelAlertMode();
+        }
         Vector3 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
@@ -179,7 +202,9 @@ public class RandomMoveEnemy1 : MonoBehaviour //don't forget to change the scrip
     private void StartChasing()
     {
         isChasing = true;
-        agent.speed = chaseSpeed; // 切換到追擊速度
+        isAlert = false;
+        agent.isStopped = false; // 啟用移動
+        agent.speed = chaseSpeed; // 切換為追擊速度
 
         animator.SetBool("isChasing", true);
     }

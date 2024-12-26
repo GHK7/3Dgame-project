@@ -28,7 +28,7 @@ public class Villagers : MonoBehaviour
     [Header("���ް_�l�y�С]�۰ʭp��^")]
     public Vector3 patrolStartPosition; // NPC ���ް_�l��m (�۰ʭp��)
 
-    private float pauseTimer = 0f; // �O���Ȱ��ɶ�
+    private float pauseTimer = 1.6f; // �O���Ȱ��ɶ�
     private bool isPaused = false; // �O�_���b�Ȱ�
 
     private Animator animator;
@@ -68,7 +68,7 @@ public class Villagers : MonoBehaviour
         {
             if (!isPaused && !isRetreating)
             {
-                StartPauseAndFacePlayer(directionToPlayer); // �}�l�Ȱ��í��V���a
+                StartPauseAndFacePlayer(directionToPlayer); 
             }
         }
         else
@@ -86,7 +86,7 @@ public class Villagers : MonoBehaviour
             }
         }
 
-        // �B�z�Ȱ��p��
+        
         if (isPaused)
         {
             pauseTimer -= Time.deltaTime;
@@ -100,13 +100,14 @@ public class Villagers : MonoBehaviour
     bool IsPlayerInFieldOfView(Vector3 directionToPlayer)
     {
         float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-        return angleToPlayer <= fieldOfView / 2; // �ˬd�O�_�b�����d��
+        return angleToPlayer <= fieldOfView / 2; 
     }
 
     void StartPauseAndFacePlayer(Vector3 directionToPlayer)
     {
         isPaused = true;
         animator.SetBool("IsTerrified", true);
+        animator.SetBool("IsDancing", false);
         pauseTimer = 1f; // �]�w�Ȱ��ɶ��� 2 ��
         agent.isStopped = true; // ���� NavMeshAgent ������
 
@@ -141,6 +142,7 @@ public class Villagers : MonoBehaviour
         {
             isReturningToPatrol = false;
             angle = startAngle; // ��_��T�w�����ް_�l����
+            animator.SetBool("IsDancing", true);
             PatrolAroundPoint();
         }
     }
