@@ -32,6 +32,6 @@ public class HealthBar : MonoBehaviour
     void EndGame()
     {
         SceneManager.LoadScene("GameOver");
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
     }
 }

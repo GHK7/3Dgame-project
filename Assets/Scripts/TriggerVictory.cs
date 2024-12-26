@@ -25,7 +25,7 @@ public class TriggerVictory : MonoBehaviour
         }
         else
         {
-            Debug.LogError("VideoPlayer not assigned!");
+            
         }
     }
 
