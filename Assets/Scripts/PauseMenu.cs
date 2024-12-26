@@ -65,6 +65,7 @@ public class PauseMenu : MonoBehaviour
         {
             soundEffectSource.UnPause(); // 恢復音效播放
         }
+        AudioListener.pause = false;
         isPaused = false;
     }
 
@@ -77,6 +78,8 @@ public class PauseMenu : MonoBehaviour
             soundEffectSource.Pause(); // 暫停音效播放
         }
         isPaused = true;
+        AudioListener.pause = true;
+        
     }
 
     // 調整音量
