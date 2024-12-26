@@ -14,6 +14,7 @@ public class StandEnemy : MonoBehaviour
     public LayerMask obstacleLayer;  // ��ê���h��
     public float chaseSpeed = 3.5f;  // �l���t��
     public int damage = 15;
+    public float attackRange = 5f;
     public float attackCooldown = 2f;     // 攻击冷却时间
 
     private NavMeshAgent agent;
@@ -64,15 +65,23 @@ public class StandEnemy : MonoBehaviour
             }
         }
         TurnAround();
+        animator.SetBool("IsAttacking", false);
     }
     private void ChaseMode()
     {
         Vector3 directionToPlayer = player.transform.position - transform.position;
+        float distanceToPlayer = directionToPlayer.magnitude;
         
-        // ��s�l���ؼ�
         agent.SetDestination(player.transform.position);
+        if (distanceToPlayer <= attackRange)
+        {
+            AttackPlayer();
+        }
+        else if(distanceToPlayer > attackRange)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
 
-        // �p�G���a���}�����d��A���^���޼Ҧ�
         if (Mathf.Abs(Vector3.Angle(transform.forward, directionToPlayer)) >= viewAngle)
         {
             StopChasing();
@@ -93,12 +102,19 @@ public class StandEnemy : MonoBehaviour
     }
     void AttackPlayer()
     {
+
+        Vector3 directionToPlayer = player.transform.position - transform.position;
+
+        // 設定敵人繞 Y 軸旋轉面向玩家
+        Quaternion targetRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0f, directionToPlayer.z));
+        transform.rotation = targetRotation;
+
         if (Time.time - lastAttackTime >= attackCooldown)
         {
             lastAttackTime = Time.time;  //記錄攻擊時間
             healthBar.beenAttacked(damage);   //呼叫生命值腳本(傷害參數)
         }
-        
+        animator.SetBool("IsAttacking", true);
     }
     private void TurnAround()
     {
@@ -142,5 +158,9 @@ public class StandEnemy : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position, leftBoundary);
         Gizmos.DrawRay(transform.position, rightBoundary);
+
+        // 畫出攻擊範圍
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
