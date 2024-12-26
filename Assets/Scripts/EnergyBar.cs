@@ -4,59 +4,72 @@ using UnityEngine.UI;
 public class EnergyBar : MonoBehaviour
 {
     public GameObject Player;
-    public Slider slider; // ³s±µSlider
-    public int maxEnergy = 100; // ³Ì¤jÅé¤O­È
-    public float drainRate = 20f; // ¨C¬í´î¤ÖªºÅé¤O­È
-    public float recoverRate = 10f; // ¨C¬í«ì´_ªºÅé¤O­È
+    public Slider slider; // æ»‘åŠ¨æ¡
+    public int maxEnergy = 100; // æœ€å¤§èƒ½é‡å€¼
+    public float drainRate = 20f; // æ¯ç§’æ¶ˆè€—çš„èƒ½é‡å€¼
+    public float recoverRate = 10f; // æ¯ç§’æ¢å¤çš„èƒ½é‡å€¼
 
-    private bool isUsingEnergy = false; // ¬O§_¥¿¦b®ø¯ÓÅé¤O
-
-    PlayerMovement playerMovement;
+    private bool isUsingEnergy = false; // æ˜¯å¦æ­£åœ¨æ¶ˆè€—èƒ½é‡
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         SetMaxEnergy(maxEnergy);
-
-        // ¨ú±oª±®aªº PlayerMovement ¤¸¥ó
         playerMovement = Player.GetComponent<PlayerMovement>();
     }
 
     private void Update()
     {
-        // «ö¦íFÁä®ø¯ÓÅé¤O
-        if (Input.GetKey(KeyCode.F))
+        // æ£€æµ‹æ˜¯å¦æŒ‰ä¸‹ Dash é”®ä¸”èƒ½é‡å€¼å¤§äº 0
+        if (Input.GetKey(KeyCode.F) && slider.value > 0)
         {
             isUsingEnergy = true;
             UseEnergy(drainRate * Time.deltaTime);
 
-            playerMovement.Dash();
+            // å¯åŠ¨ Dash
+            if (!playerMovement.isDashing)
+            {
+                playerMovement.isDashing = true;
+            }
         }
         else
         {
             isUsingEnergy = false;
             RecoverEnergy(recoverRate * Time.deltaTime);
+
+            // åœæ­¢ Dash
+            if (playerMovement.isDashing)
+            {
+                playerMovement.isDashing = false;
+            }
+        }
+
+        // å½“èƒ½é‡å½’é›¶æ—¶å¼ºåˆ¶åœæ­¢ Dash
+        if (slider.value <= 0 && playerMovement.isDashing)
+        {
+            playerMovement.isDashing = false;
         }
     }
 
-    // ³]©w³Ì¤jÅé¤O­È
+    // è®¾ç½®æœ€å¤§èƒ½é‡å€¼
     public void SetMaxEnergy(int energy)
     {
         slider.maxValue = energy;
         slider.value = energy;
     }
 
-    // ®ø¯ÓÅé¤O
+    // æ¶ˆè€—èƒ½é‡
     public void UseEnergy(float amount)
     {
-        slider.value = Mathf.Max(0, slider.value - amount); // ½T«OÅé¤O¤£§C©ó0
+        slider.value = Mathf.Max(0, slider.value - amount); // ç¡®ä¿èƒ½é‡ä¸ä½äº 0
     }
 
-    // «ì´_Åé¤O
+    // æ¢å¤èƒ½é‡
     public void RecoverEnergy(float amount)
     {
         if (!isUsingEnergy)
         {
-            slider.value = Mathf.Min(maxEnergy, slider.value + amount); // ½T«OÅé¤O¤£¶W¹L³Ì¤j­È
+            slider.value = Mathf.Min(maxEnergy, slider.value + amount); // ç¡®ä¿èƒ½é‡ä¸è¶…è¿‡æœ€å¤§å€¼
         }
     }
 }
