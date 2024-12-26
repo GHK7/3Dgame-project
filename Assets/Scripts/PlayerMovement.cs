@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource audioSource; // 音效來源
     public AudioClip runSound; // 跑步音效
     private bool isPlayingRunSound = false; // 確保跑步音效不重複播放
+    public AudioClip dashSound; // 衝刺音效
+    private bool isPlayingDashSound = false;
     private Animator animator;
     
     void Start()
@@ -133,11 +135,18 @@ public class PlayerMovement : MonoBehaviour
             isPlayingRunSound = false;
         }
 
+        if (!isPlayingDashSound)
+        {
+            audioSource.PlayOneShot(dashSound);
+            isPlayingDashSound = true;
+        }
+
         animator.SetBool("isRunning", false);
 
         yield return new WaitForSeconds(dashDuration);
 
         isDashing = false;
+        isPlayingDashSound = false; // 重置 Dash 音效播放狀態
     }
 
 }

@@ -25729,6 +25729,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   isDashing: 0
   runSound: {fileID: 8300000, guid: 49a7d6c07bcd30d4da7ae8d2c4f5c57e, type: 3}
+  dashSound: {fileID: 8300000, guid: 9681b661d268c3e428c0b0ad3d30f408, type: 3}
 --- !u!143 &483405229
 CharacterController:
   m_ObjectHideFlags: 0
@@ -25788,7 +25789,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 49a7d6c07bcd30d4da7ae8d2c4f5c57e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -27508,7 +27509,7 @@ MonoBehaviour:
   volumeSlider: {fileID: 1421906109}
   pauseButton: {fileID: 1320031703}
   ButtonSound: {fileID: 8300000, guid: 7ab6ed0a115e7b246bf636636593fe03, type: 3}
-  soundEffectSource: {fileID: 0}
+  soundEffectSource: {fileID: 547734751}
 --- !u!82 &547734751
 AudioSource:
   m_ObjectHideFlags: 0
@@ -56188,9 +56189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547734750}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: PauseButton
+      - m_Target: {fileID: 547734751}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -56200,9 +56201,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 963194231}
-        m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 547734750}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: PauseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

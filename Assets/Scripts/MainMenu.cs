@@ -8,8 +8,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        // 隱藏選單
-        playUI.SetActive(false);
+        
     }
 
 
