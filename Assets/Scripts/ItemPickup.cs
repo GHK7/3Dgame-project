@@ -8,7 +8,7 @@ public class ItemPickup : MonoBehaviour
     public GameObject ending;
     public GameObject pickupText; // UI 提示對象
     public GameObject image , text, gate;
-    public GameObject patrol1, patrol2;
+    public GameObject patrol1, patrol2, hunter;
     public Light playerLight; // 玩家頭上的光源
     public float lightIntensityIncrement = 0.3f; // 每次拾取物品增加的光強度
 
@@ -25,6 +25,7 @@ public class ItemPickup : MonoBehaviour
         gate.SetActive(true);
         patrol1.SetActive(false);
         patrol2.SetActive(false);
+        hunter.SetActive(false);
 
 
         if (playerLight == null)
@@ -55,6 +56,7 @@ public class ItemPickup : MonoBehaviour
         if (itemCount == 5)
         {
             ending.SetActive(true);
+            hunter.SetActive(true);
             image.SetActive(false);
             text.SetActive(false);
             gate.SetActive(false);

@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player;              // 玩家对象
     public float attackRange = 5f;        // 敌人的攻击范围
     public float attackCooldown = 2f;     // 攻击冷却时间
+    public int damage = 50;
     public float speed = 3.5f;            // 敌人移动速度
     //public int maxAttacks = 3;            // 最大攻击次数
 
@@ -71,7 +72,7 @@ public class EnemyAI : MonoBehaviour
             //StartCoroutine(PauseAfterAttack(1f));  // 调用协程暂停敌人1秒
             //attackCount++;
 
-            healthBar.beenAttacked(20);   //呼叫生命值腳本(傷害參數)
+            healthBar.beenAttacked(damage);   //呼叫生命值腳本(傷害參數)
 
             //if (attackCount >= maxAttacks)
             //{
