@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // 手柄按鍵支援：F 鍵或手柄按鈕 B (JoystickButton1) 啟動 Dash
-        if ((Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.JoystickButton1)) && dashCooldownTimer <= 0 && move.magnitude > 0)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.JoystickButton1)) && dashCooldownTimer <= 0 && move.magnitude > 0)
         {
             StartCoroutine(Dash());
         }

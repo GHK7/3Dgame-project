@@ -21,7 +21,7 @@ public class EnergyBar : MonoBehaviour
     private void Update()
     {
         // 检测是否按下 Dash 键且能量值大于 0
-        if (Input.GetKey(KeyCode.F) && slider.value > 0)
+        if (Input.GetKey(KeyCode.LeftShift) && slider.value > 0)
         {
             isUsingEnergy = true;
             UseEnergy(drainRate * Time.deltaTime);
