@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class HorizontalRotation : MonoBehaviour
 {
-    public float rotationSpeed = 100f; // ±±¨î±ÛÂà³t«×
+    public float rotationSpeed = 100f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½
 
     void Update()
     {
-        // ­pºâ±ÛÂà¨¤«×
+        // ï¿½pï¿½ï¿½ï¿½ï¿½à¨¤ï¿½ï¿½
         float rotationAmount = rotationSpeed * Time.deltaTime;
 
-        // Åýª«¥óÂ¶µÛ Y ¶b±ÛÂà
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ Y ï¿½bï¿½ï¿½ï¿½ï¿½
         transform.Rotate(0f, rotationAmount, 0f);
     }
 }
