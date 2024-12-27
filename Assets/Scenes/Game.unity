@@ -93084,7 +93084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1410100599}
   targetScene: VictoryScene
-  delay: 3
+  delay: 2
 --- !u!1 &2082631901
 GameObject:
   m_ObjectHideFlags: 0
